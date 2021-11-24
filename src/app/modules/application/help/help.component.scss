@@ -1,0 +1,15 @@
+mat-expansion-panel-header {
+  background-color: gray;
+}
+
+mat-accordion {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3rem;
+}
+
+mat-expansion-panel {
+  width: 80%;
+}

@@ -10,6 +10,7 @@ import { LoginModule } from './modules/login/login.module';
 import { PlatformModule } from './modules/platform/platform.module';
 import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './material/material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MaterialModule } from './material/material.module';
     LoginModule,
     PlatformModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

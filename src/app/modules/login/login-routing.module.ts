@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { LoginModuleComponent } from './login.module.component';
 import { LoginComponent } from './login/login.component';
 
@@ -9,8 +10,12 @@ const routes: Routes = [
     component: LoginModuleComponent,
     children: [
       {
-        path: 'login',
+        path: '',
         component: LoginComponent,
+      },
+      {
+        path: 'forgot-password',
+        component: ForgotPasswordComponent,
       },
     ],
   },
