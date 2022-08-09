@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
 import { Pacient } from 'src/app/data/models/pacient.model';
 import { PacientService } from 'src/app/data/services/pacient.service';
 
@@ -9,6 +10,7 @@ import { PacientService } from 'src/app/data/services/pacient.service';
   styleUrls: ['./pacients.component.scss'],
 })
 export class PacientsComponent implements OnInit {
+  wardId :number = -1;
   displayedColumns: string[] = [
     'demo-PacientId',
     'demo-LastName',
@@ -16,10 +18,13 @@ export class PacientsComponent implements OnInit {
     'demo-Actions',
   ];
   dataSource = new MatTableDataSource<Pacient>();
-  constructor(private pacientService: PacientService) {}
+  constructor(private pacientService: PacientService,
+    private route: ActivatedRoute,) {
+    this.wardId = this.route.snapshot.params.wardId;
+  }
 
   ngOnInit(): void {
-    this.pacientService.refreshList().subscribe((res) => {
+    this.pacientService.refreshListFromWard(this.wardId).subscribe((res) => {
       this.dataSource = new MatTableDataSource(res as Pacient[]);
     });
   }
@@ -36,7 +41,7 @@ export class PacientsComponent implements OnInit {
     this.pacientService.formData.lastName = 'BBBBBB';
     this.pacientService.formData.dob = new Date("1970/02/05")
     this.pacientService.add().subscribe((res) => {
-      this.pacientService.refreshList().subscribe((res) => {
+      this.pacientService.refreshListFromWard(this.wardId).subscribe((res) => {
         this.dataSource = new MatTableDataSource(res as Pacient[]);
       });
     });
@@ -44,7 +49,7 @@ export class PacientsComponent implements OnInit {
 
   delete(id: number):void{
     this.pacientService.delete(id).subscribe((res) => {
-      this.pacientService.refreshList().subscribe((res) => {
+      this.pacientService.refreshListFromWard(this.wardId).subscribe((res) => {
         this.dataSource = new MatTableDataSource(res as Pacient[]);
       });
     });

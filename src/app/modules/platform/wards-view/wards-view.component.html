@@ -1,16 +1,7 @@
 <div class="actions">
   <div class="add-btn">
-    <button mat-raised-button color="primary" (click)="add()">
+    <button mat-raised-button color="primary" (click)="openDialog()">
       <mat-icon>add_outline</mat-icon>
-    </button>
-  </div>
-  <mat-form-field appearance="fill">
-    <mat-label>Add/Edit input</mat-label>
-    <input matInput type="text" [(ngModel)]="name"/>
-  </mat-form-field>
-  <div class="add-btn">
-    <button mat-raised-button color="primary" (click)="editToServ()">
-      <mat-icon>edit</mat-icon>
     </button>
   </div>
 </div>
@@ -21,12 +12,12 @@
       color="accent"
       selected
       [removable]="true"
-      (removed)="delete(ward.wardId)"
+      (removed)="openDialogDelete(ward)"
     >
       <span routerLink="/pacients/{{ ward.wardId }}">
         {{ ward.name }}
       </span>
-      <mat-icon class="delete-icon" (click)="edit(ward)"
+      <mat-icon class="delete-icon" (click)="openDialogEdit(ward)"
         >edit</mat-icon
       ><mat-icon class="delete-icon" matChipRemove
         >cancel</mat-icon

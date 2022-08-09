@@ -12,6 +12,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { UsersViewComponent } from './users-view/users-view.component';
 import { UserModalComponent } from './user-modal/user-modal.component';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
+import { WardModalComponent } from './ward-modal/ward-modal.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { DeleteModalComponent } from './delete-modal/delete-modal.component';
     DialogComponent,
     UsersViewComponent,
     UserModalComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    WardModalComponent
   ],
   imports: [
     CommonModule,

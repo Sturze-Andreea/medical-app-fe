@@ -18,6 +18,10 @@ export class PacientService {
         return this.httpClient.get(this.baseURL)
     }
 
+    refreshListFromWard(id: number){
+        return this.httpClient.get(`${this.baseURL}/fromWard/${id}`)
+    }
+
     add(){
         return this.httpClient.post(this.baseURL, this.formData);
     }

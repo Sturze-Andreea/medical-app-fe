@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Ward } from 'src/app/data/models/ward.model';
 import { WardService } from 'src/app/data/services/ward.service';
+import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
+import { WardModalComponent } from '../ward-modal/ward-modal.component';
 
 @Component({
   selector: 'app-wards-view',
@@ -8,20 +11,10 @@ import { WardService } from 'src/app/data/services/ward.service';
   styleUrls: ['./wards-view.component.scss'],
 })
 export class WardsViewComponent implements OnInit {
-  name: string = '';
-  constructor(public service: WardService) {}
+  constructor(public service: WardService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.service.refreshList();
-  }
-
-  add() {
-    this.service.formData = new Ward();
-    this.service.formData.name = this.name;
-    this.service.add().subscribe((res) => {
-      this.service.refreshList();
-    });
-    this.name = '';
   }
 
   delete(wardId: number) {
@@ -30,15 +23,34 @@ export class WardsViewComponent implements OnInit {
     });
   }
 
-  edit(ward: Ward) {
-    this.service.formData.wardId = ward.wardId;
-    this.name = ward.name;
-  }
-  editToServ() {
-    this.service.formData.name = this.name;
-    this.service.edit().subscribe((res) => {
+  openDialog(): void {
+    const dialogRef = this.dialog.open(WardModalComponent, {
+      data: undefined,
+    });
+    dialogRef.afterClosed().subscribe((data: any) => {
       this.service.refreshList();
     });
-    this.name = '';
+  }
+
+  openDialogEdit(ward: any): void {
+    this.service.formData.wardId = ward.wardId;
+    const dialogRef = this.dialog.open(WardModalComponent, {
+      data: ward,
+    });
+    dialogRef.afterClosed().subscribe((data: any) => {
+      this.service.refreshList();
+    });
+  }
+
+  openDialogDelete(ward: any): void {
+    const dialogRef = this.dialog.open(DeleteModalComponent, {
+      data: `the ward ${ward.name}`,
+    });
+    dialogRef.componentInstance.save.subscribe((res: any) => {
+      this.delete(ward.wardId);
+    });
+    dialogRef.afterClosed().subscribe((data: any) => {
+      this.service.refreshList();
+    });
   }
 }
