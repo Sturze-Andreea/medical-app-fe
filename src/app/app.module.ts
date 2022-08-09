@@ -10,7 +10,8 @@ import { LoginModule } from './modules/login/login.module';
 import { PlatformModule } from './modules/platform/platform.module';
 import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './material/material.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from './data/services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,13 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

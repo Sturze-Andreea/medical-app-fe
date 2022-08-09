@@ -8,6 +8,10 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { PacientsComponent } from './pacients/pacients.component';
 import { PacientDetailsComponent } from './pacient-details/pacient-details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DialogComponent } from './dialog/dialog.component';
+import { UsersViewComponent } from './users-view/users-view.component';
+import { UserModalComponent } from './user-modal/user-modal.component';
+import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 
 
 @NgModule({
@@ -15,7 +19,11 @@ import { HttpClientModule } from '@angular/common/http';
     PlatformModuleComponent,
     WardsViewComponent,
     PacientsComponent,
-    PacientDetailsComponent
+    PacientDetailsComponent,
+    DialogComponent,
+    UsersViewComponent,
+    UserModalComponent,
+    DeleteModalComponent
   ],
   imports: [
     CommonModule,

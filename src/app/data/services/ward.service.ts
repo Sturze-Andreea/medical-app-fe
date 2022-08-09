@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Ward } from '../models/ward.model';
+import { apiPath } from '../utils';
 
 @Injectable({
     providedIn: 'root',
@@ -9,7 +10,7 @@ export class WardService {
     constructor(private httpClient: HttpClient) {
     }
 
-    readonly baseURL= 'https://localhost:5001/Wards';
+    readonly baseURL=  `${apiPath}/wards`;
     formData: Ward = new Ward();
     list:Ward[];
 

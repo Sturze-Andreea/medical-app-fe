@@ -23,7 +23,7 @@
       [removable]="true"
       (removed)="delete(ward.wardId)"
     >
-      <span routerLink="/platform/pacients/{{ ward.wardId }}">
+      <span routerLink="/pacients/{{ ward.wardId }}">
         {{ ward.name }}
       </span>
       <mat-icon class="delete-icon" (click)="edit(ward)"

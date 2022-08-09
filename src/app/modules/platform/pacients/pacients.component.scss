@@ -4,7 +4,7 @@
 
 .mat-column-demo-PacientId {
   width: 32px;
-  border-right: 1px solid currentColor;
+  border-right: 1px solid #000;
   padding-right: 24px;
   text-align: center;
 }
@@ -18,16 +18,55 @@
   padding-left: 10px;
   padding-right: 10px !important;
   font-size: 15px;
-  border-left: 0.5px solid gray;
-  width: 2rem;
+  border-left: 0.5px solid #222;
+  width: 5rem;
   text-align: center;
 }
 
-.wrapper{
+.wrapper {
+  margin-top: 0.5rem;
   margin-left: 2rem;
   margin-right: 2rem;
 }
 
-mat-icon:hover{
+.table {
+  height: 80vh;
+  overflow: auto;
+}
+
+mat-icon:hover {
   cursor: pointer;
+}
+
+.mat-row:nth-child(even) {
+  background-color: #ddd;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: #fff;
+}
+
+#no-data {
+  font-size: 1rem;
+  padding-left: 5.3rem;
+}
+
+.mat-table {
+  overflow-x: scroll;
+}
+
+.mat-header-row {
+  background-color: #888;
+}
+
+.mat-header-cell {
+  color: #fff;
+}
+
+.action-buttons{
+  display: flex;
+  flex-direction: row;
+}
+th.mat-header-cell, td.mat-cell{
+  padding-left: 0.5rem;
 }

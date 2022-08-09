@@ -1,0 +1,58 @@
+<div>
+  <div class="x-icon">
+    <mat-icon color="error" (click)="close()">close</mat-icon>
+  </div>
+  <form [formGroup]="userForm">
+    <mat-form-field class="full-width-input" color="accent">
+      <input
+        matInput
+        placeholder="First name"
+        formControlName="firstName"
+        required
+      />
+      <mat-error *ngIf="userForm.controls.firstName.hasError('required')">
+        You must enter a value!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input" color="accent">
+      <input
+        matInput
+        placeholder="Last name"
+        formControlName="lastName"
+        required
+      /><mat-error *ngIf="userForm.controls.lastName.hasError('required')">
+        You must enter a value!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input" color="accent">
+      <input
+        matInput
+        placeholder="Email"
+        formControlName="email"
+        required
+      /><mat-error *ngIf="userForm.controls.email.hasError('required')">
+        You must enter a value! </mat-error
+      ><mat-error *ngIf="userForm.controls.email.hasError('email')">
+        Incorrect format!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input" color="accent">
+      <input
+        matInput
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+        [required]="this.data ? false : true"
+      />
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!userForm.dirty || !userForm.valid"
+      type="submit"
+      (click)="save()"
+    >
+      Save
+    </button>
+  </form>
+</div>

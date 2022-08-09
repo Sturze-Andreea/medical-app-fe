@@ -1,0 +1,71 @@
+<div class="signin-content">
+  <mat-card>
+    <mat-card-title> Register</mat-card-title>
+    <form [formGroup]="registerForm">
+      <mat-card-content>
+        <mat-form-field class="full-width-input" color="accent">
+          <input
+            matInput
+            placeholder="First name"
+            formControlName="firstName"
+            required
+          />
+          <mat-error
+            *ngIf="registerForm.controls.firstName.hasError('required')"
+          >
+            You must enter a value!
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input" color="accent">
+          <input
+            matInput
+            placeholder="Last name"
+            formControlName="lastName"
+            required
+          /><mat-error
+            *ngIf="registerForm.controls.lastName.hasError('required')"
+          >
+            You must enter a value!
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input" color="accent">
+          <input
+            matInput
+            placeholder="Email"
+            formControlName="email"
+            required
+          /><mat-error *ngIf="registerForm.controls.email.hasError('required')">
+            You must enter a value! </mat-error
+          ><mat-error *ngIf="registerForm.controls.email.hasError('email')">
+            Incorrect format!
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input" color="accent">
+          <input
+            matInput
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+            required
+          /><mat-error
+            *ngIf="registerForm.controls.password.hasError('required')"
+          >
+            You must enter a value!
+          </mat-error>
+        </mat-form-field>
+      </mat-card-content>
+      <button
+        mat-raised-button
+        type="submit"
+        [disabled]="!registerForm.valid"
+        (click)="register()"
+      >
+        Register
+      </button>
+    </form>
+    <p>
+      Already have an account?
+      <span class="register-link" routerLink="/login">Login here</span>
+    </p>
+  </mat-card>
+</div>

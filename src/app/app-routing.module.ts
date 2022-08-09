@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthenticationGuardService } from './data/services/authentication-guard.service';
 import { AppLayoutComponent } from './modules/application/app-layout/app-layout.component';
 import { HelpComponent } from './modules/application/help/help.component';
 
@@ -10,7 +11,8 @@ const routes: Routes = [
     children: [
       {
         path: 'help',
-        component: HelpComponent
+        component: HelpComponent,
+        canActivate: [AuthenticationGuardService],
       },
       {
         path: '',
@@ -18,6 +20,7 @@ const routes: Routes = [
           import('./modules/platform/platform.module').then(
             (m) => m.PlatformModule
           ),
+          canActivate: [AuthenticationGuardService],
       }
     ],
   },{

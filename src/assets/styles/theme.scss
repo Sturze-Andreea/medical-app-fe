@@ -1,0 +1,12 @@
+@import '~@angular/material/theming';
+@import './palette.scss';
+
+@include mat-core();
+
+$medical-app-warn: mat.define-palette(mat.$red-palette);
+$medical-app-primary: mat-palette($green-palette, 500);
+$medical-app-accent:  mat-palette($brown-palette, 300);
+
+$medical-app-theme: mat-light-theme($medical-app-primary, $medical-app-accent, $medical-app-warn);
+
+@include angular-material-theme($medical-app-theme);

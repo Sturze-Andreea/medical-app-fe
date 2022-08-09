@@ -1,0 +1,15 @@
+<button mat-raised-button color="primary" (click)="openDialog()">
+  <mat-icon>add_outline</mat-icon>
+</button>
+<ul class="users-wrapper">
+  <li class="user-container" *ngFor="let user of users">
+    <p class="name">{{ user.firstName }} {{ user.lastName }}</p>
+    <div class="details">
+      <p class="email">{{ user.email }}</p>
+      <div class="icons">
+        <mat-icon color="primary" (click)="openDialogEdit(user)">edit</mat-icon>
+        <mat-icon color="error" (click)="openDialogDelete(user)">delete_outline</mat-icon>
+      </div>
+    </div>
+</li>
+</ul>

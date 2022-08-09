@@ -1,14 +1,17 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button>
+  <button mat-icon-button routerLink="/">
     <mat-icon>home</mat-icon>
   </button>
-  <span>My App</span>
+  <span>Medical App</span>
   <span class="example-spacer"></span>
+  <button mat-icon-button routerLink="/users">
+    <mat-icon>people_outline</mat-icon>
+  </button>
   <button mat-icon-button routerLink="/help">
     <mat-icon>help_outline</mat-icon>
   </button>
-  <button mat-icon-button routerLink="/login/login">
-    <mat-icon>person_outline</mat-icon>
+  <button mat-icon-button (click)="logout()">
+    <mat-icon>logout</mat-icon>
   </button>
 </mat-toolbar>
 <router-outlet></router-outlet>

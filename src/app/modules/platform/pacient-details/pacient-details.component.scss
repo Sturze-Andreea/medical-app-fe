@@ -1,0 +1,38 @@
+.container {
+  background: linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(to bottom right, #ff4081, #3f51b5) border-box;
+  padding: 1rem;
+  border: 0.3rem solid transparent;
+  border-radius: 1rem;
+  display: inline-block;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.title{
+    padding: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.container-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.upper-container{
+    width: 20%;
+    height: 18rem;
+}
+
+.lower-container{
+    width: calc(40% + 2rem);
+    height: 18rem;
+}
