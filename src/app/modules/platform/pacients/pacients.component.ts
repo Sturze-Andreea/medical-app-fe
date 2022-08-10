@@ -4,9 +4,12 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Pacient } from 'src/app/data/models/pacient.model';
 import { PacientFromWard } from 'src/app/data/models/pacientFromWard.model';
+import { Ward } from 'src/app/data/models/ward.model';
 import { HospitalizationService } from 'src/app/data/services/hospitalization.service';
 import { PacientService } from 'src/app/data/services/pacient.service';
+import { WardService } from 'src/app/data/services/ward.service';
 import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
+import { HospitalizationModalComponent } from '../hospitalization-modal/hospitalization-modal.component';
 
 @Component({
   selector: 'app-pacients',
@@ -15,11 +18,13 @@ import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
 })
 export class PacientsComponent implements OnInit {
   wardId: number = -1;
+  ward: Ward = new Ward();
   displayedColumns: string[] = [
-    'demo-PacientId',
-    'demo-LastName',
-    'demo-FirstName',
+    'demo-Pacient',
     'demo-Date',
+    'demo-RoomNr',
+    'demo-BedNr',
+    'demo-Doctor',
     'demo-Actions',
   ];
   dataSource = new MatTableDataSource<PacientFromWard>();
@@ -27,9 +32,13 @@ export class PacientsComponent implements OnInit {
     private pacientService: PacientService,
     private hospitalizationService: HospitalizationService,
     private route: ActivatedRoute,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private wardService: WardService
   ) {
     this.wardId = this.route.snapshot.params.wardId;
+    this.wardService.getById(this.wardId).subscribe((data: any) => {
+      this.ward = data;
+    });
   }
 
   ngOnInit(): void {
@@ -65,7 +74,9 @@ export class PacientsComponent implements OnInit {
 
   openDialogDelete(hospitalization: any): void {
     const dialogRef = this.dialog.open(DeleteModalComponent, {
-      data: `the hospitalization for ${hospitalization.lastName} ${hospitalization.firstName} from ${hospitalization.hospitalizationDate.substring(0,10)}`,
+      data: `the hospitalization for ${hospitalization.lastName} ${
+        hospitalization.firstName
+      } from ${hospitalization.hospitalizationDate.substring(0, 10)}`,
     });
     dialogRef.componentInstance.save.subscribe((res: any) => {
       this.delete(hospitalization.hospitalizationId);
@@ -83,5 +94,37 @@ export class PacientsComponent implements OnInit {
         this.dataSource = new MatTableDataSource(res as PacientFromWard[]);
       });
     });
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(HospitalizationModalComponent, {
+      data: {
+        ward: Number(this.wardId)
+      },
+    });
+    dialogRef.afterClosed().subscribe((data: any) => {
+      this.pacientService.refreshListFromWard(this.wardId).subscribe((res) => {
+        this.dataSource = new MatTableDataSource(res as PacientFromWard[]);
+      });
+    });
+  }
+
+  openDialogEdit(hospitalizationId: any): void {
+    this.hospitalizationService
+      .getById(hospitalizationId)
+      .subscribe((data: any) => {
+        const dialogRef = this.dialog.open(HospitalizationModalComponent, {
+          data: data,
+        });
+        dialogRef.afterClosed().subscribe((data: any) => {
+          this.pacientService
+            .refreshListFromWard(this.wardId)
+            .subscribe((res) => {
+              this.dataSource = new MatTableDataSource(
+                res as PacientFromWard[]
+              );
+            });
+        });
+      });
   }
 }

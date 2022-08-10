@@ -1,0 +1,162 @@
+<div>
+  <div class="x-icon">
+    <mat-icon color="error" (click)="close()">close</mat-icon>
+  </div>
+  <form [formGroup]="hospitalizationForm">
+    <mat-form-field class="full-width-input" color="accent">
+      
+        <mat-label>Patient</mat-label>
+        <mat-select formControlName="patientId" required>
+          <mat-option *ngFor="let patient of patients" [value]="patient.patientId">{{patient.lastName}} {{patient.firstName}}</mat-option>
+        </mat-select>
+      
+      <mat-error
+        *ngIf="hospitalizationForm.controls.patientId.hasError('required')"
+      >
+        You must enter a value!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input" color="accent">
+      <input
+        matInput
+        type="date"
+        placeholder="Date"
+        formControlName="date"
+        required
+      />
+      <mat-error *ngIf="hospitalizationForm.controls.date.hasError('required')">
+        You must enter a value!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input" color="accent">
+      <input
+        matInput
+        placeholder="Room Nr"
+        type="number"
+        formControlName="roomNr"
+        required
+      />
+      <mat-error
+        *ngIf="hospitalizationForm.controls.roomNr.hasError('required')"
+      >
+        You must enter a value!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input" color="accent">
+      <input
+        matInput
+        placeholder="Bed Nr"
+        type="number"
+        formControlName="bedNr"
+        required
+      />
+      <mat-error *ngIf="hospitalizationForm.controls.date.hasError('required')">
+        You must enter a value!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input" color="accent">
+        <mat-label>Doctor</mat-label>
+        <mat-select formControlName="doctor" required>
+          <mat-option *ngFor="let doctor of doctors" [value]="doctor.userId">{{doctor.lastName}} {{doctor.firstName}}</mat-option>
+        </mat-select>
+      <mat-error
+        *ngIf="hospitalizationForm.controls.doctor.hasError('required')"
+      >
+        You must enter a value!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width-input" color="accent">
+      <textarea
+        matInput
+        placeholder="Allergies"
+        formControlName="allergies"
+      ></textarea>
+      <mat-error
+        *ngIf="hospitalizationForm.controls.allergies.hasError('required')"
+      >
+        You must enter a value!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input" color="accent">
+      <textarea matInput placeholder="Diet" formControlName="diet"></textarea>
+      <mat-error *ngIf="hospitalizationForm.controls.diet.hasError('required')">
+        You must enter a value!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input" color="accent">
+      <input
+        matInput
+        placeholder="Contact Person Name"
+        formControlName="contactPersonName"
+        required
+      />
+      <mat-error
+        *ngIf="
+          hospitalizationForm.controls.contactPersonName.hasError('required')
+        "
+      >
+        You must enter a value!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input" color="accent">
+      <input
+        matInput
+        placeholder="Contact Person Phone Nr"
+        formControlName="contactPersonPhoneNr"
+        required
+      />
+      <mat-error
+        *ngIf="
+          hospitalizationForm.controls.contactPersonPhoneNr.hasError('required')
+        "
+      >
+        You must enter a value!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input" color="accent">
+      <input
+        matInput
+        type="number"
+        placeholder="Dependecy"
+        formControlName="dependecy"
+        required
+      />
+      <mat-error
+        *ngIf="hospitalizationForm.controls.dependecy.hasError('required')"
+      >
+        You must enter a value!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input" color="accent">
+      <input
+        matInput
+        placeholder="Falling Risk"
+        formControlName="fallingRisk"
+        required
+      />
+      <mat-error
+        *ngIf="hospitalizationForm.controls.fallingRisk.hasError('required')"
+      >
+        You must enter a value!
+      </mat-error>
+    </mat-form-field>
+    <mat-checkbox color="accent" formControlName="immobilized"
+      >Immobilized</mat-checkbox
+    >
+
+    <mat-checkbox color="accent" formControlName="discharged"
+      >Discharged</mat-checkbox
+    >
+
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!hospitalizationForm.dirty || !hospitalizationForm.valid"
+      type="submit"
+      (click)="save()"
+    >
+      Save
+    </button>
+  </form>
+</div>

@@ -1,6 +1,7 @@
 <div class="wrapper">
+  <p class="title">{{ ward.name }}</p>
   <div class="add-btn">
-    <button mat-raised-button color="primary" (click)="add()">
+    <button mat-raised-button color="primary" (click)="openDialog()">
       <mat-icon>add_outline</mat-icon></button
     ><mat-form-field color="accent">
       <input
@@ -17,33 +18,77 @@
       [dataSource]="dataSource"
       class="mat-elevation-z8 demo-table"
     >
-      <ng-container matColumnDef="demo-PacientId">
-        <th mat-header-cell *matHeaderCellDef>No.</th>
-        <td mat-cell *matCellDef="let element">{{ element.patientId }}</td>
+      <ng-container matColumnDef="demo-Pacient">
+        <th mat-header-cell *matHeaderCellDef>Patient</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          class="about-pacient"
+          routerLink="/pacient-details/{{ element.hospitalizationId }}"
+        >
+          {{ element.lastName }} {{ element.firstName }}
+        </td>
       </ng-container>
 
-      <ng-container matColumnDef="demo-LastName">
-        <th mat-header-cell *matHeaderCellDef>Last Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+      <ng-container matColumnDef="demo-RoomNr">
+        <th mat-header-cell *matHeaderCellDef>Room Nr</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          class="about-pacient"
+          routerLink="/pacient-details/{{ element.hospitalizationId }}"
+        >
+          {{ element.roomNr }}
+        </td>
       </ng-container>
-
-      <ng-container matColumnDef="demo-FirstName">
-        <th mat-header-cell *matHeaderCellDef>First Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+      <ng-container matColumnDef="demo-BedNr">
+        <th mat-header-cell *matHeaderCellDef>Bed Nr</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          class="about-pacient"
+          routerLink="/pacient-details/{{ element.hospitalizationId }}"
+        >
+          {{ element.bedNr }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="demo-Doctor">
+        <th mat-header-cell *matHeaderCellDef>Doctor</th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          class="about-pacient"
+          routerLink="/pacient-details/{{ element.hospitalizationId }}"
+        >
+          {{ element.doctor }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="demo-Date">
         <th mat-header-cell *matHeaderCellDef>Hospitalization Date</th>
-        <td mat-cell *matCellDef="let element">{{ element.hospitalizationDate.substring(0,10) }}</td>
+        <td
+          mat-cell
+          *matCellDef="let element"
+          class="about-pacient"
+          routerLink="/pacient-details/{{ element.hospitalizationId }}"
+        >
+          {{ element.hospitalizationDate.substring(0, 10) }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="demo-Actions">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let element">
-          <div class="action-buttons"><mat-icon color="accent" routerLink="/pacient-details/{{ element.hospitalizationId }}"
-            >info_outline</mat-icon
-          >
-          <mat-icon color="error" (click)="openDialogDelete(element)">delete_outline</mat-icon></div>
+          <div class="action-buttons">
+            <mat-icon
+              color="primary"
+              (click)="openDialogEdit(element.hospitalizationId)"
+              >edit</mat-icon
+            >
+            <mat-icon color="error" (click)="openDialogDelete(element)"
+              >delete_outline</mat-icon
+            >
+          </div>
         </td>
       </ng-container>
 

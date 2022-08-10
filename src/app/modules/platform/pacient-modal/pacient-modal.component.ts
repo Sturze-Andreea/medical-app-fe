@@ -35,7 +35,7 @@ export class PacientModalComponent implements OnInit {
             Validators.max(9999999999999),
           ],
         ],
-        dob: [this.data.dob, [Validators.required]],
+        dob: [this.data.dob.substring(0,10), [Validators.required]],
         firstName: [this.data.firstName, [Validators.required]],
         lastName: [this.data.lastName, [Validators.required]],
       });

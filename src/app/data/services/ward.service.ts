@@ -32,4 +32,7 @@ export class WardService {
         return this.httpClient.put(`${this.baseURL}/${this.formData.wardId}`, this.formData);
     }
     
+    getById(id:number){
+        return this.httpClient.get(`${this.baseURL}/${id}`);
+    }
 }

@@ -2,18 +2,6 @@
   width: 100%;
 }
 
-.mat-column-demo-PacientId {
-  width: 32px;
-  border-right: 1px solid #000;
-  padding-right: 24px;
-  text-align: center;
-}
-
-.mat-column-demo-Name {
-  padding-left: 16px;
-  font-size: 20px;
-}
-
 .mat-column-demo-Actions {
   padding-left: 10px;
   padding-right: 10px !important;
@@ -63,11 +51,12 @@ mat-icon:hover {
   color: #fff;
 }
 
-.action-buttons{
+.action-buttons {
   display: flex;
   flex-direction: row;
 }
-th.mat-header-cell, td.mat-cell{
+th.mat-header-cell,
+td.mat-cell {
   padding-left: 0.5rem;
 }
 
@@ -75,6 +64,17 @@ th.mat-header-cell, td.mat-cell{
   margin-bottom: 0.5rem;
 }
 
-.add-btn button{
+.add-btn button {
   margin-right: 1rem;
+}
+
+.title {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.about-pacient:hover {
+  cursor: pointer;
 }

@@ -30,6 +30,10 @@ export class AuthService {
     return this.httpClient.get(`${this.baseURL}`);
   }
 
+  getDoctors(): Observable<any> {
+    return this.httpClient.get(`${this.baseURL}/doctors`);
+  }
+
   login(email: string, password: string) {
     this.httpClient
       .post(
