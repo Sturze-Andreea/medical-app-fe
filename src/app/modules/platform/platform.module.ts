@@ -13,6 +13,10 @@ import { UsersViewComponent } from './users-view/users-view.component';
 import { UserModalComponent } from './user-modal/user-modal.component';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 import { WardModalComponent } from './ward-modal/ward-modal.component';
+import { AllPacientsViewComponent } from './all-pacients-view/all-pacients-view.component';
+import { PacientModalComponent } from './pacient-modal/pacient-modal.component';
+import { HospitalizationModalComponent } from './hospitalization-modal/hospitalization-modal.component';
+import { DetailsHospitalizationComponent } from './details-hospitalization/details-hospitalization.component';
 
 
 @NgModule({
@@ -25,7 +29,11 @@ import { WardModalComponent } from './ward-modal/ward-modal.component';
     UsersViewComponent,
     UserModalComponent,
     DeleteModalComponent,
-    WardModalComponent
+    WardModalComponent,
+    AllPacientsViewComponent,
+    PacientModalComponent,
+    HospitalizationModalComponent,
+    DetailsHospitalizationComponent
   ],
   imports: [
     CommonModule,

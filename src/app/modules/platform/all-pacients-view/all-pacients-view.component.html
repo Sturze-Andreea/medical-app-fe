@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div class="add-btn">
-    <button mat-raised-button color="primary" (click)="add()">
+    <button mat-raised-button color="primary" (click)="openDialog()">
       <mat-icon>add_outline</mat-icon></button
     ><mat-form-field color="accent">
       <input
@@ -17,9 +17,9 @@
       [dataSource]="dataSource"
       class="mat-elevation-z8 demo-table"
     >
-      <ng-container matColumnDef="demo-PacientId">
-        <th mat-header-cell *matHeaderCellDef>No.</th>
-        <td mat-cell *matCellDef="let element">{{ element.patientId }}</td>
+      <ng-container matColumnDef="demo-Cnp">
+        <th mat-header-cell *matHeaderCellDef>CNP</th>
+        <td mat-cell *matCellDef="let element">{{ element.cnp }}</td>
       </ng-container>
 
       <ng-container matColumnDef="demo-LastName">
@@ -29,21 +29,29 @@
 
       <ng-container matColumnDef="demo-FirstName">
         <th mat-header-cell *matHeaderCellDef>First Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{ element.firstName }}
+        </td>
       </ng-container>
 
-      <ng-container matColumnDef="demo-Date">
-        <th mat-header-cell *matHeaderCellDef>Hospitalization Date</th>
-        <td mat-cell *matCellDef="let element">{{ element.hospitalizationDate.substring(0,10) }}</td>
+      <ng-container matColumnDef="demo-Dob">
+        <th mat-header-cell *matHeaderCellDef>Date of Birth</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.dob.substring(0, 10) }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="demo-Actions">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let element">
-          <div class="action-buttons"><mat-icon color="accent" routerLink="/pacient-details/{{ element.hospitalizationId }}"
-            >info_outline</mat-icon
-          >
-          <mat-icon color="error" (click)="openDialogDelete(element)">delete_outline</mat-icon></div>
+          <div class="action-buttons">
+            <mat-icon color="primary" (click)="openDialogEdit(element)"
+              >edit</mat-icon
+            >
+            <mat-icon color="error" (click)="openDialogDelete(element)"
+              >delete_outline</mat-icon
+            >
+          </div>
         </td>
       </ng-container>
 

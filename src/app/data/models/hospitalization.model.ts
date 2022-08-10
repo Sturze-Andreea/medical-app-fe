@@ -1,6 +1,8 @@
 export class Hospitalization{
-    public HospitalizationId: number;
-    public PacientId: number;
-    public HospitalizationDate: Date;
+    public hospitalizationId: number;
+    public patientId: number;
+    public hospitalizationDate: Date;
+    public wardId: number;
+    public discharged: boolean;
 
 }

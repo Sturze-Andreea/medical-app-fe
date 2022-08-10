@@ -1,0 +1,22 @@
+mat-icon:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  .x-icon {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}

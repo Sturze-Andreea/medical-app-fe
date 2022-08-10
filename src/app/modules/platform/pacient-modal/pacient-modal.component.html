@@ -2,7 +2,7 @@
   <div class="x-icon">
     <mat-icon color="error" (click)="close()">close</mat-icon>
   </div>
-  <form [formGroup]="userForm">
+  <form [formGroup]="patientForm">
     <mat-form-field class="full-width-input" color="accent">
       <input
         matInput
@@ -10,7 +10,7 @@
         formControlName="firstName"
         required
       />
-      <mat-error *ngIf="userForm.controls.firstName.hasError('required')">
+      <mat-error *ngIf="patientForm.controls.firstName.hasError('required')">
         You must enter a value!
       </mat-error>
     </mat-form-field>
@@ -20,37 +20,43 @@
         placeholder="Last name"
         formControlName="lastName"
         required
-      /><mat-error *ngIf="userForm.controls.lastName.hasError('required')">
+      /><mat-error *ngIf="patientForm.controls.lastName.hasError('required')">
         You must enter a value!
       </mat-error>
     </mat-form-field>
     <mat-form-field class="full-width-input" color="accent">
       <input
         matInput
-        placeholder="Email"
-        formControlName="email"
+        type="number"
+        placeholder="CNP"
+        formControlName="cnp"
         required
-      /><mat-error *ngIf="userForm.controls.email.hasError('required')">
+      /><mat-error *ngIf="patientForm.controls.cnp.hasError('required')">
         You must enter a value! </mat-error
-      ><mat-error *ngIf="userForm.controls.email.hasError('email')">
-        Incorrect format!
+      ><mat-error
+        *ngIf="
+          patientForm.controls.cnp.errors?.max ||
+          patientForm.controls.cnp.errors?.min
+        "
+      >
+        The CNP must have 13 characters!
       </mat-error>
     </mat-form-field>
     <mat-form-field class="full-width-input" color="accent">
       <input
         matInput
-        type="password"
-        placeholder="Password"
-        formControlName="password"
-        [required]="this.data ? false : true"
-      /><mat-error *ngIf="userForm.controls.password.hasError('required')">
+        type="date"
+        placeholder="Date of Birth"
+        formControlName="dob"
+        required
+      /><mat-error *ngIf="patientForm.controls.dob.hasError('required')">
         You must enter a value!
       </mat-error>
     </mat-form-field>
     <button
       mat-raised-button
       color="primary"
-      [disabled]="!userForm.dirty || !userForm.valid"
+      [disabled]="!patientForm.dirty || !patientForm.valid"
       type="submit"
       (click)="save()"
     >

@@ -10,7 +10,7 @@ export class PacientDataService {
     constructor(private httpClient: HttpClient) {
     }
 
-    readonly baseURL= `${apiPath}/PacientDatas`;
+    readonly baseURL= `${apiPath}`;
     formData: PacientData = new PacientData();
     list:PacientData[];
 

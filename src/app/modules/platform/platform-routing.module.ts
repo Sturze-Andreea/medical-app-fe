@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AllPacientsViewComponent } from './all-pacients-view/all-pacients-view.component';
 import { PacientDetailsComponent } from './pacient-details/pacient-details.component';
 import { PacientsComponent } from './pacients/pacients.component';
 import { PlatformModuleComponent } from './platform.module.component';
@@ -16,11 +17,15 @@ const routes: Routes = [
         component: WardsViewComponent,
       },
       {
-        path: 'pacients/:wardId',
+        path: 'hospitalizations/:wardId',
         component: PacientsComponent,
       },
       {
-        path: 'pacient/:pacientId',
+        path: 'all-pacients',
+        component: AllPacientsViewComponent,
+      },
+      {
+        path: 'pacient-details/:hospitalizationId',
         component: PacientDetailsComponent,
       },
       {
@@ -33,6 +38,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class PlatformRoutingModule { }
+export class PlatformRoutingModule {}

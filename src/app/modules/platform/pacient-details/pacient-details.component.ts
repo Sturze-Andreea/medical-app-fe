@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Pacient } from 'src/app/data/models/pacient.model';
 import { PacientService } from 'src/app/data/services/pacient.service';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
+import { HospitalizationService } from 'src/app/data/services/hospitalization.service';
+import { Hospitalization } from 'src/app/data/models/hospitalization.model';
 
 @Component({
   selector: 'app-pacient-details',
@@ -11,22 +13,26 @@ import { DialogComponent } from '../dialog/dialog.component';
   styleUrls: ['./pacient-details.component.scss'],
 })
 export class PacientDetailsComponent implements OnInit {
+  hospitalization: Hospitalization = new Hospitalization();
   patient: Pacient = new Pacient();
   age: number = 0;
-  
+
   constructor(
     private pacientService: PacientService,
+    private hospitalizationService: HospitalizationService,
     private route: ActivatedRoute,
-
-    public dialog: MatDialog,
-
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-    let id = this.route.snapshot.params.pacientId;
-    this.pacientService.getById(id).subscribe((res) => {
-      this.patient = res as Pacient;
-      this.age = this.getAge(this.patient.dob);
+    let id = this.route.snapshot.params.hospitalizationId;
+    this.hospitalizationService.getById(id).subscribe((res) => {
+      this.hospitalization = res as Hospitalization;
+      this.pacientService.getById(this.hospitalization.patientId).subscribe((res) => {
+        this.patient = res as Pacient;
+        this.age = this.getAge(this.patient.dob);
+      });
+
     });
   }
 
@@ -35,7 +41,6 @@ export class PacientDetailsComponent implements OnInit {
       data: this.patient,
     });
   }
-
 
   getAge(date: Date): number {
     var today = new Date();

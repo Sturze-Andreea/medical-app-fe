@@ -1,32 +1,36 @@
-<p class="title">{{this.patient.lastName}} {{this.patient.firstName}}, {{this.age}} ani</p>
+<p class="title">
+  {{ this.patient.lastName }} {{ this.patient.firstName }}, {{ this.age }} ani
+</p>
+<div class="details">
+  <button mat-raised-button color="accent">Pacient Details</button>
+</div>
 <div class="wrapper">
   <div class="container upper-container" (click)="openDialog()">
     <p class="container-title">Temperatura</p>
-    tirykr
+    <div class="content">36.2 &#x2103;</div>
   </div>
   <div class="container upper-container" (click)="openDialog()">
     <p class="container-title">Puls</p>
-    fbdghf
+    <div class="content">72</div>
   </div>
   <div class="container upper-container" (click)="openDialog()">
     <p class="container-title">Respiratie</p>
-    fdghd
+    <div class="content">9</div>
   </div>
 
   <div class="container upper-container" (click)="openDialog()">
     <p class="container-title">Tensiune arteriala</p>
-    fdghd
+    <div class="content">36.2</div>
   </div>
 </div>
 
 <div class="wrapper">
-    <div class="container lower-container" (click)="openDialog()">
-      <p class="container-title">Plan de tratament</p>
-      tirykr
-    </div>
-    <div class="container lower-container" (click)="openDialog()">
-      <p class="container-title">Evolutie</p>
-      fbdghf
-    </div>
+  <div class="container lower-container" (click)="openDialog()">
+    <p class="container-title">Plan de tratament</p>
+    <div class="content">sdgbfhdjr</div>
   </div>
-  
+  <div class="container lower-container" (click)="openDialog()">
+    <p class="container-title">Evolutie</p>
+    <div class="content">sdgbfhdjr</div>
+  </div>
+</div>
