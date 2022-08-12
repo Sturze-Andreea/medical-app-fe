@@ -35,7 +35,10 @@ export class HospitalizationService {
     );
   }
 
-  getById(id:number){
+  getById(id: number) {
     return this.httpClient.get(`${this.baseURL}/${id}`);
-}
+  }
+  getDetails(id: number) {
+    return this.httpClient.get(`${this.baseURL}/details/${id}`);
+  }
 }

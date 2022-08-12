@@ -53,7 +53,7 @@ export class AuthService {
           this.router.navigate(['/']);
         },
         (err: any) => {
-          this.notifyService.showError('Email sau Parolă invalidă', '');
+          this.notifyService.showError('Invalid Email or Passwors', '');
         }
       );
   }
@@ -113,4 +113,8 @@ export class AuthService {
   delete(id: number) {
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
+
+  getById(id:number){
+    return this.httpClient.get(`${this.baseURL}/${id}`);
+}
 }

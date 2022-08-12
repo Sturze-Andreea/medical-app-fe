@@ -1,0 +1,110 @@
+<div>
+    <div class="x-icon">
+      <mat-icon color="error" (click)="close()">close</mat-icon>
+    </div>
+    <form [formGroup]="clinicalExaminationForm">
+      <mat-form-field class="full-width-input" color="accent">
+        <input
+          matInput
+          placeholder="General Condition"
+          formControlName="generalCondition"
+          required
+        />
+        <mat-error *ngIf="clinicalExaminationForm.controls.generalCondition.hasError('required')">
+          You must enter a value!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input" color="accent">
+        <input
+          matInput
+          type="number"
+          placeholder="Height"
+          formControlName="height"
+          required
+        /><mat-error *ngIf="clinicalExaminationForm.controls.height.hasError('required')">
+          You must enter a value!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input" color="accent">
+        <input
+          matInput
+          type="number"
+          placeholder="Weight"
+          formControlName="weight"
+          required
+        /><mat-error *ngIf="clinicalExaminationForm.controls.weight.hasError('required')">
+          You must enter a value!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input" color="accent">
+        <input
+          matInput
+          placeholder="Behaviour"
+          formControlName="behaviour"
+          required
+        /><mat-error *ngIf="clinicalExaminationForm.controls.behaviour.hasError('required')">
+          You must enter a value! </mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="full-width-input" color="accent">
+        <input
+          matInput
+          placeholder="Nutrition"
+          formControlName="nutrition"
+          required
+        /><mat-error *ngIf="clinicalExaminationForm.controls.nutrition.hasError('required')">
+          You must enter a value!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input" color="accent">
+        <input
+          matInput
+          placeholder="consciousness"
+          formControlName="consciousness"
+          required
+        /><mat-error *ngIf="clinicalExaminationForm.controls.consciousness.hasError('required')">
+          You must enter a value! </mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="full-width-input" color="accent">
+        <input
+          matInput
+          placeholder="Respiratory System"
+          formControlName="respiratorySystem"
+          required
+        /><mat-error *ngIf="clinicalExaminationForm.controls.respiratorySystem.hasError('required')">
+          You must enter a value! </mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="full-width-input" color="accent">
+        <input
+          matInput
+          placeholder="Circulatory System"
+          formControlName="circulatorySystem"
+          required
+        /><mat-error *ngIf="clinicalExaminationForm.controls.circulatorySystem.hasError('required')">
+          You must enter a value! </mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="full-width-input" color="accent">
+        <input
+          matInput
+          placeholder="Digestive Tract"
+          formControlName="digestiveTract"
+          required
+        /><mat-error *ngIf="clinicalExaminationForm.controls.digestiveTract.hasError('required')">
+          You must enter a value! </mat-error
+        >
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!clinicalExaminationForm.dirty || !clinicalExaminationForm.valid"
+        type="submit"
+        (click)="save()"
+      >
+        Save
+      </button>
+    </form>
+  </div>
+  

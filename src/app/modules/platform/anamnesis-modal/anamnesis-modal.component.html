@@ -1,0 +1,78 @@
+<div>
+    <div class="x-icon">
+      <mat-icon color="error" (click)="close()">close</mat-icon>
+    </div>
+    <form [formGroup]="anamnesisForm">
+      <mat-form-field class="full-width-input" color="accent">
+        <input
+          matInput
+          placeholder="Colateral Antecedents"
+          formControlName="colateralAntecedents"
+          required
+        />
+        <mat-error *ngIf="anamnesisForm.controls.colateralAntecedents.hasError('required')">
+          You must enter a value!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input" color="accent">
+        <input
+          matInput
+          placeholder="Life and Work Conditions"
+          formControlName="lifeWorkConditions"
+          required
+        /><mat-error *ngIf="anamnesisForm.controls.lifeWorkConditions.hasError('required')">
+          You must enter a value!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input" color="accent">
+        <input
+          matInput
+          placeholder="Behaviour"
+          formControlName="behaviour"
+          required
+        /><mat-error *ngIf="anamnesisForm.controls.behaviour.hasError('required')">
+          You must enter a value! </mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="full-width-input" color="accent">
+        <input
+          matInput
+          placeholder="Personal Antecedents"
+          formControlName="personalAntecedents"
+          required
+        /><mat-error *ngIf="anamnesisForm.controls.personalAntecedents.hasError('required')">
+          You must enter a value!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input" color="accent">
+        <input
+          matInput
+          placeholder="Medication from before"
+          formControlName="beforeMedication"
+          required
+        /><mat-error *ngIf="anamnesisForm.controls.beforeMedication.hasError('required')">
+          You must enter a value! </mat-error
+        >
+      </mat-form-field>
+      <mat-form-field class="full-width-input" color="accent">
+        <input
+          matInput
+          placeholder="Disease History"
+          formControlName="diseaseHistory"
+          required
+        /><mat-error *ngIf="anamnesisForm.controls.diseaseHistory.hasError('required')">
+          You must enter a value! </mat-error
+        >
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!anamnesisForm.dirty || !anamnesisForm.valid"
+        type="submit"
+        (click)="save()"
+      >
+        Save
+      </button>
+    </form>
+  </div>
+  

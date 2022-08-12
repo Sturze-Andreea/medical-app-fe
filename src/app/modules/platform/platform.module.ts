@@ -17,6 +17,16 @@ import { AllPacientsViewComponent } from './all-pacients-view/all-pacients-view.
 import { PacientModalComponent } from './pacient-modal/pacient-modal.component';
 import { HospitalizationModalComponent } from './hospitalization-modal/hospitalization-modal.component';
 import { DetailsHospitalizationComponent } from './details-hospitalization/details-hospitalization.component';
+import { TempModalComponent } from './temp-modal/temp-modal.component';
+import { PulseModalComponent } from './pulse-modal/pulse-modal.component';
+import { BreathModalComponent } from './breaths-modal/breaths-modal.component';
+import { TaModalComponent } from './ta-modal/ta-modal.component';
+import { AnamnesisModalComponent } from './anamnesis-modal/anamnesis-modal.component';
+import { ClinicalExaminationModalComponent } from './clinical-examination-modal/clinical-examination-modal.component';
+import { AllTemperaturesComponent } from './all-temperatures/all-temperatures.component';
+import { AllPulsesComponent } from './all-pulses/all-pulses.component';
+import { AllBreathsComponent } from './all-breaths/all-breaths.component';
+import { AllTasComponent } from './all-tas/all-tas.component';
 
 
 @NgModule({
@@ -33,7 +43,17 @@ import { DetailsHospitalizationComponent } from './details-hospitalization/detai
     AllPacientsViewComponent,
     PacientModalComponent,
     HospitalizationModalComponent,
-    DetailsHospitalizationComponent
+    DetailsHospitalizationComponent,
+    TempModalComponent,
+    PulseModalComponent,
+    BreathModalComponent,
+    TaModalComponent,
+    AnamnesisModalComponent,
+    ClinicalExaminationModalComponent,
+    AllTemperaturesComponent,
+    AllPulsesComponent,
+    AllBreathsComponent,
+    AllTasComponent,
   ],
   imports: [
     CommonModule,

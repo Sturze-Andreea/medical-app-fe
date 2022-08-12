@@ -1,0 +1,77 @@
+<div>
+  <div class="edit-btn">
+    <button
+      mat-icon-button
+      color="accent"
+      (click)="openDialogHospitalization()"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+  <p>CNP: {{ patient.cnp }}</p>
+  <p>Ward: {{ ward.name }}</p>
+  <p>Date: {{ hospitalization.date?.substring(0, 10) }}</p>
+  <p>Room Nr: {{ hospitalization.roomNr }}</p>
+  <p>Bed Nr: {{ hospitalization.bedNr }}</p>
+  <p>Doctor: {{ doctor.lastName }} {{ doctor.firstName }}</p>
+  <p>Allergies: {{ hospitalization.allergies }}</p>
+  <p>Diet: {{ hospitalization.diet }}</p>
+  <p>Contact Person Name: {{ hospitalization.contactPersonName }}</p>
+  <p>Contact Person Phone Nr: {{ hospitalization.contactPersonPhoneNr }}</p>
+  <p>Dependecy: {{ hospitalization.dependecy }}</p>
+  <p>Falling Risk: {{ hospitalization.fallingRisk }}</p>
+  <p>Is Immobilized: {{ hospitalization.immobilized }}</p>
+</div>
+
+<hr />
+<div *ngIf="anamnesis.anamnesisId">
+  <div class="edit-btn">
+    <button mat-icon-button color="accent" (click)="openDialogAnamnesis(anamnesis)">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+  <h3><b>Anamnesis</b></h3>
+  <p>Life and Work Conditions: {{ anamnesis.lifeWorkConditions }}</p>
+  <p>Colateral Antecedents: {{ anamnesis.colateralAntecedents }}</p>
+  <p>Behaviour: {{ anamnesis.behaviour }}</p>
+  <p>Personal Antecedents: {{ anamnesis.personalAntecedents }}</p>
+  <p>Medication from before: {{ anamnesis.beforeMedication }}</p>
+  <p>Disease History: {{ anamnesis.diseaseHistory }}</p>
+</div>
+
+<div *ngIf="!anamnesis.anamnesisId">
+  <div class="edit-btn">
+    <button mat-icon-button color="accent" (click)="openDialogAnamnesis()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <h3><b>Anamnesis</b></h3>
+</div>
+
+<hr />
+<div *ngIf="clinicalExamination.clinicalExaminationId">
+  <div class="edit-btn">
+    <button mat-icon-button color="accent" (click)="openDialogClinicalExamination(clinicalExamination)">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+  <h3><b>Clinical Examination</b></h3>
+  <p>Height: {{ clinicalExamination.height }}</p>
+  <p>Weight: {{ clinicalExamination.weight }}</p>
+  <p>General Condition: {{ clinicalExamination.generalCondition }}</p>
+  <p>Behaviour: {{ clinicalExamination.behaviour }}</p>
+  <p>Nutrition: {{ clinicalExamination.nutrition }}</p>
+  <p>Consciousness: {{ clinicalExamination.consciousness }}</p>
+  <p>Respiratory System: {{ clinicalExamination.respiratorySystem }}</p>
+  <p>Circulatory System: {{ clinicalExamination.circulatorySystem }}</p>
+  <p>Digestive Tract: {{ clinicalExamination.digestiveTract }}</p>
+</div>
+
+<div *ngIf="!clinicalExamination.clinicalExaminationId">
+  <div class="edit-btn">
+    <button mat-icon-button color="accent" (click)="openDialogClinicalExamination()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <h3><b>Clinical Examination</b></h3>
+</div>

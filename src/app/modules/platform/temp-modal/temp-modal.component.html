@@ -1,0 +1,46 @@
+<div>
+  <div class="x-icon">
+    <mat-icon color="error" (click)="close()">close</mat-icon>
+  </div>
+  <form [formGroup]="tempForm">
+    <mat-form-field class="full-width-input" color="accent">
+      <input
+        matInput
+        type="number"
+        placeholder="Temperature"
+        formControlName="temp"
+        required
+      />
+      <mat-error *ngIf="tempForm.controls.temp.hasError('required')">
+        You must enter a value! </mat-error
+      ><mat-error
+        *ngIf="
+          tempForm.controls.temp.errors?.max ||
+          tempForm.controls.temp.errors?.min
+        "
+      >
+        Wrong value!
+      </mat-error> </mat-form-field
+    ><mat-form-field class="full-width-input" color="accent">
+      <input
+        matInput
+        type="date"
+        placeholder="Date"
+        formControlName="date"
+        required
+      />
+      <mat-error *ngIf="tempForm.controls.date.hasError('required')">
+        You must enter a value!
+      </mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!tempForm.dirty || !tempForm.valid"
+      type="submit"
+      (click)="save()"
+    >
+      Save
+    </button>
+  </form>
+</div>

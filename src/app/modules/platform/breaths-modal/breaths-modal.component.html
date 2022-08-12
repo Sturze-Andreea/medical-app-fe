@@ -1,0 +1,47 @@
+<div>
+    <div class="x-icon">
+      <mat-icon color="error" (click)="close()">close</mat-icon>
+    </div>
+    <form [formGroup]="breathForm">
+      <mat-form-field class="full-width-input" color="accent">
+        <input
+          matInput
+          type="number"
+          placeholder="Breath Nr"
+          formControlName="breathNr"
+          required
+        />
+        <mat-error *ngIf="breathForm.controls.breathNr.hasError('required')">
+          You must enter a value! </mat-error
+        ><mat-error
+          *ngIf="
+            breathForm.controls.breathNr.errors?.max ||
+            breathForm.controls.breathNr.errors?.min
+          "
+        >
+          Wrong value!
+        </mat-error> </mat-form-field
+      ><mat-form-field class="full-width-input" color="accent">
+        <input
+          matInput
+          type="date"
+          placeholder="Date"
+          formControlName="date"
+          required
+        />
+        <mat-error *ngIf="breathForm.controls.date.hasError('required')">
+          You must enter a value!
+        </mat-error>
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!breathForm.dirty || !breathForm.valid"
+        type="submit"
+        (click)="save()"
+      >
+        Save
+      </button>
+    </form>
+  </div>
+  

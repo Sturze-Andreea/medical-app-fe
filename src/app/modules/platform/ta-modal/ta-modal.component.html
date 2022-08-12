@@ -1,0 +1,64 @@
+<div>
+  <div class="x-icon">
+    <mat-icon color="error" (click)="close()">close</mat-icon>
+  </div>
+  <form [formGroup]="taForm">
+    <mat-form-field class="full-width-input" color="accent">
+      <input
+        matInput
+        type="number"
+        placeholder="Blood pressure min"
+        formControlName="min"
+        required
+      />
+      <mat-error *ngIf="taForm.controls.min.hasError('required')">
+        You must enter a value! </mat-error
+      ><mat-error
+        *ngIf="
+          taForm.controls.min.errors?.max || taForm.controls.min.errors?.min
+        "
+      >
+        Wrong value!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input" color="accent">
+      <input
+        matInput
+        type="number"
+        placeholder="Blood pressure max"
+        formControlName="max"
+        required
+      />
+      <mat-error *ngIf="taForm.controls.max.hasError('required')">
+        You must enter a value! </mat-error
+      ><mat-error
+        *ngIf="
+          taForm.controls.max.errors?.max || taForm.controls.max.errors?.min
+        "
+      >
+        Wrong value!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input" color="accent">
+      <input
+        matInput
+        type="date"
+        placeholder="Date"
+        formControlName="date"
+        required
+      />
+      <mat-error *ngIf="taForm.controls.date.hasError('required')">
+        You must enter a value!
+      </mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!taForm.dirty || !taForm.valid"
+      type="submit"
+      (click)="save()"
+    >
+      Save
+    </button>
+  </form>
+</div>
