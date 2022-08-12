@@ -8,9 +8,9 @@ import { AuthService } from 'src/app/data/services/auth.service';
 import { ClinicalExaminationService } from 'src/app/data/services/clinicalExamination.service';
 import { HospitalizationService } from 'src/app/data/services/hospitalization.service';
 import { WardService } from 'src/app/data/services/ward.service';
-import { AnamnesisModalComponent } from '../anamnesis-modal/anamnesis-modal.component';
-import { ClinicalExaminationModalComponent } from '../clinical-examination-modal/clinical-examination-modal.component';
-import { HospitalizationModalComponent } from '../hospitalization-modal/hospitalization-modal.component';
+import { AnamnesisModalComponent } from '../modals/anamnesis-modal/anamnesis-modal.component';
+import { ClinicalExaminationModalComponent } from '../modals/clinical-examination-modal/clinical-examination-modal.component';
+import { HospitalizationModalComponent } from '../modals/hospitalization-modal/hospitalization-modal.component';
 
 @Component({
   selector: 'app-details-hospitalization',

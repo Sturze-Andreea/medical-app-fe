@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/data/services/auth.service';
-import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
-import { UserModalComponent } from '../user-modal/user-modal.component';
+import { DeleteModalComponent } from '../modals/delete-modal/delete-modal.component';
+import { UserModalComponent } from '../modals/user-modal/user-modal.component';
 
 @Component({
   selector: 'app-users-view',

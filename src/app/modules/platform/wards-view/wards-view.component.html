@@ -13,9 +13,10 @@
       selected
       [removable]="true"
       (removed)="openDialogDelete(ward)"
+      style="border-radius:0.7rem !important"
     >
       <span routerLink="/hospitalizations/{{ ward.wardId }}">
-        {{ ward.name }}
+        {{ ward.name }}&nbsp;
       </span>
       <mat-icon class="delete-icon" (click)="openDialogEdit(ward)"
         >edit</mat-icon

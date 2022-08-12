@@ -10,15 +10,19 @@
       {{ this.age }} years
     </p>
     <div class="wrapper">
-      <div class="container upper-container" >
+      <div class="container upper-container">
         <p class="container-title" (click)="openDialogAllTemp()">Temperature</p>
         <div class="add-btn" *ngIf="this.details.temperature !== -1">
           <button mat-icon-button color="primary" (click)="openDialogTemp()">
             <mat-icon>add</mat-icon>
           </button>
         </div>
-        <div class="content" (click)="openDialogAllTemp()" *ngIf="this.details.temperature !== -1">
-          {{this.details.temperature}}&#x2103;
+        <div
+          class="content"
+          (click)="openDialogAllTemp()"
+          *ngIf="this.details.temperature !== -1"
+        >
+          {{ this.details.temperature }}&#x2103;
         </div>
         <div class="simple-content" *ngIf="this.details.temperature === -1">
           <button mat-icon-button color="primary" (click)="openDialogTemp()">
@@ -34,8 +38,12 @@
             <mat-icon>add</mat-icon>
           </button>
         </div>
-        <div class="content" (click)="openDialogAllPulses()" *ngIf="this.details.pulse !== -1">
-          {{this.details.pulse}}
+        <div
+          class="content"
+          (click)="openDialogAllPulses()"
+          *ngIf="this.details.pulse !== -1"
+        >
+          {{ this.details.pulse }}
         </div>
         <div class="simple-content" *ngIf="this.details.pulse === -1">
           <button mat-icon-button color="primary" (click)="openDialogPulse()">
@@ -45,14 +53,18 @@
       </div>
 
       <div class="container upper-container">
-        <p class="container-title"  (click)="openDialogAllBreaths()">Breaths</p>
+        <p class="container-title" (click)="openDialogAllBreaths()">Breaths</p>
         <div class="add-btn" *ngIf="this.details.breathNr !== -1">
           <button mat-icon-button color="primary" (click)="openDialogBreath()">
             <mat-icon>add</mat-icon>
           </button>
         </div>
-        <div class="content"  (click)="openDialogAllBreaths()" *ngIf="this.details.breathNr !== -1">
-          {{this.details.breathNr}}
+        <div
+          class="content"
+          (click)="openDialogAllBreaths()"
+          *ngIf="this.details.breathNr !== -1"
+        >
+          {{ this.details.breathNr }}
         </div>
         <div class="simple-content" *ngIf="this.details.breathNr === -1">
           <button mat-icon-button color="primary" (click)="openDialogBreath()">
@@ -62,14 +74,20 @@
       </div>
 
       <div class="container upper-container">
-        <p class="container-title" (click)="openDialogAllTas()">Blood pressure</p>
+        <p class="container-title" (click)="openDialogAllTas()">
+          Blood pressure
+        </p>
         <div class="add-btn" *ngIf="this.details.minTA !== -1">
           <button mat-icon-button color="primary" (click)="openDialogTA()">
             <mat-icon>add</mat-icon>
           </button>
         </div>
-        <div class="content" (click)="openDialogAllTas()" *ngIf="this.details.minTA !== -1">
-          {{this.details.maxTA}}/{{this.details.minTA}}
+        <div
+          class="content"
+          (click)="openDialogAllTas()"
+          *ngIf="this.details.minTA !== -1"
+        >
+          {{ this.details.maxTA }}/{{ this.details.minTA }}
         </div>
         <div class="simple-content" *ngIf="this.details.minTA === -1">
           <button mat-icon-button color="primary" (click)="openDialogTA()">
@@ -78,18 +96,20 @@
         </div>
       </div>
 
-      <div class="container upper-container" (click)="openDialog()">
-        <p class="container-title">Liquids</p>
-        <div class="add-btn" *ngIf="this.details.fluid !== -1">
-          <button mat-icon-button color="primary">
+      <div class="container upper-container">
+        <p class="container-title" (click)="openDialogAllOthers()">Others</p>
+        <div class="add-btn" *ngIf="this.details.diuresisDescription">
+          <button mat-icon-button color="primary" (click)="openDialogOthers()">
             <mat-icon>add</mat-icon>
           </button>
         </div>
-        <div class="content" *ngIf="this.details.fluid !== -1">
-          {{this.details.fluid}}
+        <div class="content content-others" (click)="openDialogAllOthers()" *ngIf="this.details.diuresisDescription">
+          <p>Vomiting: {{this.details.vomitingDescription}}</p>
+          <p>Diuresis: {{this.details.diuresisDescription}}</p>
+          <p>Discharge: {{this.details.dischargeDescription}}</p>
         </div>
-        <div class="simple-content" *ngIf="this.details.fluid === -1">
-          <button mat-icon-button color="primary">
+        <div class="simple-content" *ngIf="!this.details.diuresisDescription">
+          <button mat-icon-button color="primary" (click)="openDialogOthers()">
             <mat-icon>add</mat-icon>
           </button>
         </div>
@@ -97,7 +117,7 @@
     </div>
 
     <div class="wrapper">
-      <div class="container lower-container" (click)="openDialog()">
+      <div class="container lower-container">
         <p class="container-title">Medication plan</p>
         <div class="add-btn">
           <button mat-icon-button color="primary">
@@ -106,14 +126,36 @@
         </div>
         <div class="content">sdgbfhdjr</div>
       </div>
-      <div class="container lower-container" (click)="openDialog()">
-        <p class="container-title">Evolution</p>
-        <div class="add-btn">
-          <button mat-icon-button color="primary">
+      
+      <div class="container lower-container">
+        <p class="container-title" (click)="openDialogAllEvolutions()">
+          Evolution
+        </p>
+        <div class="add-btn" *ngIf="this.details.evolutionDescription">
+          <button
+            mat-icon-button
+            color="primary"
+            (click)="openDialogEvolution()"
+          >
             <mat-icon>add</mat-icon>
           </button>
         </div>
-        <div class="content">sdgbfhdjr</div>
+        <div
+          class="content"
+          (click)="openDialogAllEvolutions()"
+          *ngIf="this.details.evolutionDescription"
+        >
+          {{ this.details.evolutionDescription }}
+        </div>
+        <div class="simple-content" *ngIf="!this.details.evolutionDescription">
+          <button
+            mat-icon-button
+            color="primary"
+            (click)="openDialogEvolution()"
+          >
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
       </div>
     </div>
   </div>

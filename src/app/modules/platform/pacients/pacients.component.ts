@@ -9,8 +9,8 @@ import { AuthService } from 'src/app/data/services/auth.service';
 import { HospitalizationService } from 'src/app/data/services/hospitalization.service';
 import { PacientService } from 'src/app/data/services/pacient.service';
 import { WardService } from 'src/app/data/services/ward.service';
-import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
-import { HospitalizationModalComponent } from '../hospitalization-modal/hospitalization-modal.component';
+import { DeleteModalComponent } from '../modals/delete-modal/delete-modal.component';
+import { HospitalizationModalComponent } from '../modals/hospitalization-modal/hospitalization-modal.component';
 
 @Component({
   selector: 'app-pacients',

@@ -1,0 +1,56 @@
+<div>
+    <div class="x-icon">
+      <mat-icon color="error" (click)="close()">close</mat-icon>
+    </div>
+    <form [formGroup]="liquidsForm">
+      <mat-form-field class="full-width-input" color="accent">
+        <input matInput placeholder="Vomiting" formControlName="vomiting" required />
+        <mat-error
+          *ngIf="liquidsForm.controls.vomiting.hasError('required')"
+        >
+          You must enter a value!
+        </mat-error> </mat-form-field
+      >
+      
+      <mat-form-field class="full-width-input" color="accent">
+        <input matInput placeholder="Diuresis" formControlName="diuresis" required />
+        <mat-error
+          *ngIf="liquidsForm.controls.diuresis.hasError('required')"
+        >
+          You must enter a value!
+        </mat-error> </mat-form-field
+      >
+      
+      <mat-form-field class="full-width-input" color="accent">
+        <input matInput placeholder="Discharge" formControlName="discharge" required />
+        <mat-error
+          *ngIf="liquidsForm.controls.discharge.hasError('required')"
+        >
+          You must enter a value!
+        </mat-error> </mat-form-field
+      >
+      
+      <mat-form-field class="full-width-input" color="accent">
+        <input
+          matInput
+          type="date"
+          placeholder="Date"
+          formControlName="date"
+          required
+        />
+        <mat-error *ngIf="liquidsForm.controls.date.hasError('required')">
+          You must enter a value!
+        </mat-error>
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!liquidsForm.dirty || !liquidsForm.valid"
+        type="submit"
+        (click)="save()"
+      >
+        Save
+      </button>
+    </form>
+  </div>
+  

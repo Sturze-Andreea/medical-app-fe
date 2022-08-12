@@ -3,20 +3,21 @@ import { ActivatedRoute } from '@angular/router';
 import { Pacient } from 'src/app/data/models/pacient.model';
 import { PacientService } from 'src/app/data/services/pacient.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '../dialog/dialog.component';
 import { HospitalizationService } from 'src/app/data/services/hospitalization.service';
 import { Hospitalization } from 'src/app/data/models/hospitalization.model';
-import { DetailsHospitalizationComponent } from '../details-hospitalization/details-hospitalization.component';
 import { PacientDetails } from 'src/app/data/models/pacientDetails.model';
-import { TempModalComponent } from '../temp-modal/temp-modal.component';
-import { PulseModalComponent } from '../pulse-modal/pulse-modal.component';
-import { BreathModalComponent } from '../breaths-modal/breaths-modal.component';
-import { TaModalComponent } from '../ta-modal/ta-modal.component';
-import { AllTemperaturesComponent } from '../all-temperatures/all-temperatures.component';
-import { AllPulsesComponent } from '../all-pulses/all-pulses.component';
-import { AllBreathsComponent } from '../all-breaths/all-breaths.component';
-import { AllTasComponent } from '../all-tas/all-tas.component';
-
+import { TempModalComponent } from '../modals/temp-modal/temp-modal.component';
+import { PulseModalComponent } from '../modals/pulse-modal/pulse-modal.component';
+import { BreathModalComponent } from '../modals/breaths-modal/breaths-modal.component';
+import { TaModalComponent } from '../modals/ta-modal/ta-modal.component';
+import { EvolutionModalComponent } from '../modals/evolution-modal/evolution-modal.component';
+import { OthersModalComponent } from '../modals/others-modal/others-modal.component';
+import { AllTemperaturesComponent } from '../modals/all-temperatures/all-temperatures.component';
+import { AllPulsesComponent } from '../modals/all-pulses/all-pulses.component';
+import { AllBreathsComponent } from '../modals/all-breaths/all-breaths.component';
+import { AllTasComponent } from '../modals/all-tas/all-tas.component';
+import { AllEvolutionsComponent } from '../modals/all-evolutions/all-evolutions.component';
+import { AllOthersComponent } from '../modals/all-others/all-others.component';
 @Component({
   selector: 'app-pacient-details',
   templateUrl: './pacient-details.component.html',
@@ -48,12 +49,6 @@ export class PacientDetailsComponent implements OnInit {
     });
     this.hospitalizationService.getDetails(id).subscribe((data: any) => {
       this.details = data;
-    });
-  }
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
-      data: this.patient,
     });
   }
 
@@ -120,6 +115,32 @@ export class PacientDetailsComponent implements OnInit {
     });
   }
 
+  openDialogEvolution(): void {
+    const dialogRef = this.dialog.open(EvolutionModalComponent, {
+      data: { hospitalization: this.hospitalization.hospitalizationId },
+    });
+    dialogRef.afterClosed().subscribe((data: any) => {
+      this.hospitalizationService
+        .getDetails(this.hospitalization.hospitalizationId)
+        .subscribe((data: any) => {
+          this.details = data;
+        });
+    });
+  }
+
+  openDialogOthers(): void {
+    const dialogRef = this.dialog.open(OthersModalComponent, {
+      data: { hospitalization: this.hospitalization.hospitalizationId },
+    });
+    dialogRef.afterClosed().subscribe((data: any) => {
+      this.hospitalizationService
+        .getDetails(this.hospitalization.hospitalizationId)
+        .subscribe((data: any) => {
+          this.details = data;
+        });
+    });
+  }
+
   openDialogAllTemp(): void {
     const dialogRef = this.dialog.open(AllTemperaturesComponent, {
       data: this.hospitalization.hospitalizationId,
@@ -161,6 +182,32 @@ export class PacientDetailsComponent implements OnInit {
 
   openDialogAllTas(): void {
     const dialogRef = this.dialog.open(AllTasComponent, {
+      data: this.hospitalization.hospitalizationId,
+    });
+    dialogRef.afterClosed().subscribe((data: any) => {
+      this.hospitalizationService
+        .getDetails(this.hospitalization.hospitalizationId)
+        .subscribe((data: any) => {
+          this.details = data;
+        });
+    });
+  }
+
+  openDialogAllEvolutions(): void {
+    const dialogRef = this.dialog.open(AllEvolutionsComponent, {
+      data: this.hospitalization.hospitalizationId,
+    });
+    dialogRef.afterClosed().subscribe((data: any) => {
+      this.hospitalizationService
+        .getDetails(this.hospitalization.hospitalizationId)
+        .subscribe((data: any) => {
+          this.details = data;
+        });
+    });
+  }
+
+  openDialogAllOthers(): void {
+    const dialogRef = this.dialog.open(AllOthersComponent, {
       data: this.hospitalization.hospitalizationId,
     });
     dialogRef.afterClosed().subscribe((data: any) => {

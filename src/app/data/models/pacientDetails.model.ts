@@ -9,5 +9,6 @@ export class PacientDetails{
     public maxTA: number;
     public temperature: number;
     public vomitingDescription: string;
+    public evolutionDescription: string;
 
 }

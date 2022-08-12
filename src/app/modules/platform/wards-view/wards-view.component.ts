@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Ward } from 'src/app/data/models/ward.model';
 import { WardService } from 'src/app/data/services/ward.service';
-import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
-import { WardModalComponent } from '../ward-modal/ward-modal.component';
+import { DeleteModalComponent } from '../modals/delete-modal/delete-modal.component';
+import { WardModalComponent } from '../modals/ward-modal/ward-modal.component';
 
 @Component({
   selector: 'app-wards-view',
