@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AllPacientsViewComponent } from './modals/all-pacients-view/all-pacients-view.component';
+import { AllPacientsViewComponent } from './all-pacients-view/all-pacients-view.component';
 import { PacientDetailsComponent } from './pacient-details/pacient-details.component';
 import { PacientsComponent } from './pacients/pacients.component';
 import { PlatformModuleComponent } from './platform.module.component';

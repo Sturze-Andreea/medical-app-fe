@@ -12,7 +12,7 @@ import { UsersViewComponent } from './users-view/users-view.component';
 import { UserModalComponent } from './modals/user-modal/user-modal.component';
 import { DeleteModalComponent } from './modals/delete-modal/delete-modal.component';
 import { WardModalComponent } from './modals/ward-modal/ward-modal.component';
-import { AllPacientsViewComponent } from './modals/all-pacients-view/all-pacients-view.component';
+import { AllPacientsViewComponent } from './all-pacients-view/all-pacients-view.component';
 import { PacientModalComponent } from './modals/pacient-modal/pacient-modal.component';
 import { HospitalizationModalComponent } from './modals/hospitalization-modal/hospitalization-modal.component';
 import { DetailsHospitalizationComponent } from './details-hospitalization/details-hospitalization.component';
@@ -30,6 +30,7 @@ import { AllEvolutionsComponent } from './modals/all-evolutions/all-evolutions.c
 import { EvolutionModalComponent } from './modals/evolution-modal/evolution-modal.component';
 import { AllOthersComponent } from './modals/all-others/all-others.component';
 import { OthersModalComponent } from './modals/others-modal/others-modal.component';
+import { DrugModalComponent } from './modals/drug-modal/drug-modal.component';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { OthersModalComponent } from './modals/others-modal/others-modal.compone
     EvolutionModalComponent,
     AllOthersComponent,
     OthersModalComponent,
+    DrugModalComponent,
   ],
   imports: [
     CommonModule,

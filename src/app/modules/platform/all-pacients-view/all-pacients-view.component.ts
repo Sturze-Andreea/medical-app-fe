@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Pacient } from 'src/app/data/models/pacient.model';
 import { PacientService } from 'src/app/data/services/pacient.service';
-import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
-import { PacientModalComponent } from '../pacient-modal/pacient-modal.component';
+import { DeleteModalComponent } from '../modals/delete-modal/delete-modal.component';
+import { PacientModalComponent } from '../modals/pacient-modal/pacient-modal.component';
 
 @Component({
   selector: 'app-all-pacients-view',
@@ -20,6 +21,7 @@ export class AllPacientsViewComponent implements OnInit {
     'demo-Actions',
   ];
   dataSource = new MatTableDataSource<Pacient>();
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(
     private pacientService: PacientService,
     public dialog: MatDialog
@@ -28,6 +30,7 @@ export class AllPacientsViewComponent implements OnInit {
   ngOnInit(): void {
     this.pacientService.refreshList().subscribe((res) => {
       this.dataSource = new MatTableDataSource(res as Pacient[]);
+      this.dataSource.paginator = this.paginator;
     });
   }
 
@@ -40,6 +43,7 @@ export class AllPacientsViewComponent implements OnInit {
     this.pacientService.delete(id).subscribe((res) => {
       this.pacientService.refreshList().subscribe((res) => {
         this.dataSource = new MatTableDataSource(res as Pacient[]);
+        this.dataSource.paginator = this.paginator;
       });
     });
   }
@@ -57,6 +61,7 @@ export class AllPacientsViewComponent implements OnInit {
     dialogRef.afterClosed().subscribe((data: any) => {
       this.pacientService.refreshList().subscribe((data: any) => {
         this.dataSource = new MatTableDataSource(data as Pacient[]);
+        this.dataSource.paginator = this.paginator;
       });
     });
   }
@@ -71,6 +76,7 @@ export class AllPacientsViewComponent implements OnInit {
     dialogRef.afterClosed().subscribe((data: any) => {
       this.pacientService.refreshList().subscribe((data: any) => {
         this.dataSource = new MatTableDataSource(data as Pacient[]);
+        this.dataSource.paginator = this.paginator;
       });
     });
   }

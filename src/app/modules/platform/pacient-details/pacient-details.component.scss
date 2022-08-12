@@ -80,7 +80,103 @@
   width: 100%;
 }
 
-.content-others{
+.content-others {
   font-size: 1.3rem;
   align-items: flex-start;
+}
+
+.demo-table {
+  width: 100%;
+}
+
+.wrapper {
+  margin-top: 0.5rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.table {
+  height: 80vh;
+  overflow: auto;
+}
+
+mat-icon:hover {
+  cursor: pointer;
+}
+
+.mat-row:nth-child(even) {
+  background-color: #ddd;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: #fff;
+}
+
+#no-data {
+  font-size: 1rem;
+  padding-left: 5.3rem;
+}
+
+.mat-table {
+  overflow-x: scroll;
+  z-index: 2;
+}
+
+.mat-header-row {
+  background-color: #888;
+}
+
+.mat-header-cell {
+  color: #fff;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+}
+th.mat-header-cell,
+td.mat-cell {
+  padding-left: 0.5rem;
+}
+
+.add-btn {
+  margin-bottom: 0.5rem;
+}
+
+.add-btn button {
+  margin-right: 1rem;
+}
+tr.mat-header-row {
+  height: 1rem;
+}
+tr.mat-row {
+  height: 1.2rem;
+}
+
+.mat-column-name,
+.mat-column-frequency,
+.mat-column-administerWay {
+  width: 32px;
+  border-right: 1px solid #aaa;
+  padding-right: 24px;
+  text-align: center;
+}
+.mat-column-actions {
+  text-align: center;
+}
+
+mat-paginator {
+  z-index: 1;
+}
+
+.medication .add-btn {
+  float: right;
+}
+.medication .content {
+  height: calc(100% - 2rem);
+}
+
+.medication .container-title,
+.medication .content {
+  cursor: default;
 }

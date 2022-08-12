@@ -1,0 +1,43 @@
+<div>
+    <div class="x-icon">
+      <mat-icon color="error" (click)="close()">close</mat-icon>
+    </div>
+    <form [formGroup]="drugForm">
+      <mat-form-field class="full-width-input" color="accent">
+        <input matInput placeholder="Name" formControlName="name" required />
+        <mat-error
+          *ngIf="drugForm.controls.name.hasError('required')"
+        >
+          You must enter a value!
+        </mat-error> </mat-form-field
+      >
+
+      <mat-form-field class="full-width-input" color="accent">
+        <input matInput placeholder="Frequency" formControlName="frequency" required />
+        <mat-error
+          *ngIf="drugForm.controls.frequency.hasError('required')"
+        >
+          You must enter a value!
+        </mat-error> </mat-form-field
+      >
+
+      <mat-form-field class="full-width-input" color="accent">
+        <input matInput placeholder="Administering Way" formControlName="administerWay" required />
+        <mat-error
+          *ngIf="drugForm.controls.administerWay.hasError('required')"
+        >
+          You must enter a value!
+        </mat-error> </mat-form-field
+      >
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!drugForm.dirty || !drugForm.valid"
+        type="submit"
+        (click)="save()"
+      >
+        Save
+      </button>
+    </form>
+  </div>
+  

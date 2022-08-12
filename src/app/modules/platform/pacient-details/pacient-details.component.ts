@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Pacient } from 'src/app/data/models/pacient.model';
 import { PacientService } from 'src/app/data/services/pacient.service';
@@ -18,6 +18,12 @@ import { AllBreathsComponent } from '../modals/all-breaths/all-breaths.component
 import { AllTasComponent } from '../modals/all-tas/all-tas.component';
 import { AllEvolutionsComponent } from '../modals/all-evolutions/all-evolutions.component';
 import { AllOthersComponent } from '../modals/all-others/all-others.component';
+import { DrugService } from 'src/app/data/services/drug.service';
+import { Drug } from 'src/app/data/models/drug.model';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { DeleteModalComponent } from '../modals/delete-modal/delete-modal.component';
+import { DrugModalComponent } from '../modals/drug-modal/drug-modal.component';
 @Component({
   selector: 'app-pacient-details',
   templateUrl: './pacient-details.component.html',
@@ -28,12 +34,21 @@ export class PacientDetailsComponent implements OnInit {
   patient: Pacient = new Pacient();
   age: number = 0;
   details: PacientDetails = new PacientDetails();
+  drugs: Drug[] = [];
+  dataSource = new MatTableDataSource<Drug>();
+  displayedColumns: string[] = [
+    'name',
+    'frequency',
+    'administerWay',
+    'actions',
+  ];
 
   constructor(
     private pacientService: PacientService,
     private hospitalizationService: HospitalizationService,
     private route: ActivatedRoute,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private drugService: DrugService
   ) {}
 
   ngOnInit(): void {
@@ -49,6 +64,10 @@ export class PacientDetailsComponent implements OnInit {
     });
     this.hospitalizationService.getDetails(id).subscribe((data: any) => {
       this.details = data;
+    });
+    this.drugService.getAllByHospitalization(id).subscribe((data: any) => {
+      this.drugs = data;
+      this.dataSource = new MatTableDataSource(data as Drug[]);
     });
   }
 
@@ -141,6 +160,20 @@ export class PacientDetailsComponent implements OnInit {
     });
   }
 
+  openDialogDrug(): void {
+    const dialogRef = this.dialog.open(DrugModalComponent, {
+      data: { hospitalization: this.hospitalization.hospitalizationId },
+    });
+    dialogRef.afterClosed().subscribe((data: any) => {
+      this.drugService
+        .getAllByHospitalization(this.hospitalization.hospitalizationId)
+        .subscribe((data: any) => {
+          this.drugs = data;
+          this.dataSource = new MatTableDataSource(data as Drug[]);
+        });
+    });
+  }
+
   openDialogAllTemp(): void {
     const dialogRef = this.dialog.open(AllTemperaturesComponent, {
       data: this.hospitalization.hospitalizationId,
@@ -215,6 +248,23 @@ export class PacientDetailsComponent implements OnInit {
         .getDetails(this.hospitalization.hospitalizationId)
         .subscribe((data: any) => {
           this.details = data;
+        });
+    });
+  }
+
+  openDialogDelete(drug: any): void {
+    const dialogRef = this.dialog.open(DeleteModalComponent, {
+      data: `the drug ${drug.name} from this plan`,
+    });
+    dialogRef.componentInstance.save.subscribe((res: any) => {
+      this.drugService.delete(drug.drugId).subscribe();
+    });
+    dialogRef.afterClosed().subscribe((data: any) => {
+      this.drugService
+        .getAllByHospitalization(this.hospitalization.hospitalizationId)
+        .subscribe((data: any) => {
+          this.drugs = data;
+          this.dataSource = new MatTableDataSource(data as Drug[]);
         });
     });
   }
