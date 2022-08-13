@@ -47,20 +47,20 @@ export class PacientsComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getDoctors().subscribe((data: any) => {
       this.doctors = data;
-    });
-    this.pacientService
-      .refreshListFromWard(this.wardId)
-      .subscribe((res: any) => {
-        res.map((element: any) => {
-          const doctorId = element.doctor;
-          const doctor = this.doctors.find(
-            (doc: any) => doc.userId === doctorId
-          );
-          element.doctor = `${doctor.lastName} ${doctor.firstName}`;
-          return element;
+      this.pacientService
+        .refreshListFromWard(this.wardId)
+        .subscribe((res: any) => {
+          res.map((element: any) => {
+            const doctorId = element.doctor;
+            const doctor = this.doctors.find(
+              (doc: any) => doc.userId === doctorId
+            );
+            element.doctor = `${doctor.lastName} ${doctor.firstName}`;
+            return element;
+          });
+          this.dataSource = new MatTableDataSource(res as PacientFromWard[]);
         });
-        this.dataSource = new MatTableDataSource(res as PacientFromWard[]);
-      });
+    });
   }
 
   applyFilter(event: Event) {
@@ -79,36 +79,36 @@ export class PacientsComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((data: any) => {
       this.pacientService
-      .refreshListFromWard(this.wardId)
-      .subscribe((res: any) => {
-        res.map((element: any) => {
-          const doctorId = element.doctor;
-          const doctor = this.doctors.find(
-            (doc: any) => doc.userId === doctorId
-          );
-          element.doctor = `${doctor.lastName} ${doctor.firstName}`;
-          return element;
+        .refreshListFromWard(this.wardId)
+        .subscribe((res: any) => {
+          res.map((element: any) => {
+            const doctorId = element.doctor;
+            const doctor = this.doctors.find(
+              (doc: any) => doc.userId === doctorId
+            );
+            element.doctor = `${doctor.lastName} ${doctor.firstName}`;
+            return element;
+          });
+          this.dataSource = new MatTableDataSource(res as PacientFromWard[]);
         });
-        this.dataSource = new MatTableDataSource(res as PacientFromWard[]);
-      });
     });
   }
 
   delete(id: number): void {
     this.hospitalizationService.delete(id).subscribe((res) => {
       this.pacientService
-      .refreshListFromWard(this.wardId)
-      .subscribe((res: any) => {
-        res.map((element: any) => {
-          const doctorId = element.doctor;
-          const doctor = this.doctors.find(
-            (doc: any) => doc.userId === doctorId
-          );
-          element.doctor = `${doctor.lastName} ${doctor.firstName}`;
-          return element;
+        .refreshListFromWard(this.wardId)
+        .subscribe((res: any) => {
+          res.map((element: any) => {
+            const doctorId = element.doctor;
+            const doctor = this.doctors.find(
+              (doc: any) => doc.userId === doctorId
+            );
+            element.doctor = `${doctor.lastName} ${doctor.firstName}`;
+            return element;
+          });
+          this.dataSource = new MatTableDataSource(res as PacientFromWard[]);
         });
-        this.dataSource = new MatTableDataSource(res as PacientFromWard[]);
-      });
     });
   }
 
@@ -120,18 +120,18 @@ export class PacientsComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((data: any) => {
       this.pacientService
-      .refreshListFromWard(this.wardId)
-      .subscribe((res: any) => {
-        res.map((element: any) => {
-          const doctorId = element.doctor;
-          const doctor = this.doctors.find(
-            (doc: any) => doc.userId === doctorId
-          );
-          element.doctor = `${doctor.lastName} ${doctor.firstName}`;
-          return element;
+        .refreshListFromWard(this.wardId)
+        .subscribe((res: any) => {
+          res.map((element: any) => {
+            const doctorId = element.doctor;
+            const doctor = this.doctors.find(
+              (doc: any) => doc.userId === doctorId
+            );
+            element.doctor = `${doctor.lastName} ${doctor.firstName}`;
+            return element;
+          });
+          this.dataSource = new MatTableDataSource(res as PacientFromWard[]);
         });
-        this.dataSource = new MatTableDataSource(res as PacientFromWard[]);
-      });
     });
   }
 
@@ -144,18 +144,20 @@ export class PacientsComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe((data: any) => {
           this.pacientService
-          .refreshListFromWard(this.wardId)
-          .subscribe((res: any) => {
-            res.map((element: any) => {
-              const doctorId = element.doctor;
-              const doctor = this.doctors.find(
-                (doc: any) => doc.userId === doctorId
+            .refreshListFromWard(this.wardId)
+            .subscribe((res: any) => {
+              res.map((element: any) => {
+                const doctorId = element.doctor;
+                const doctor = this.doctors.find(
+                  (doc: any) => doc.userId === doctorId
+                );
+                element.doctor = `${doctor.lastName} ${doctor.firstName}`;
+                return element;
+              });
+              this.dataSource = new MatTableDataSource(
+                res as PacientFromWard[]
               );
-              element.doctor = `${doctor.lastName} ${doctor.firstName}`;
-              return element;
             });
-            this.dataSource = new MatTableDataSource(res as PacientFromWard[]);
-          });
         });
       });
   }

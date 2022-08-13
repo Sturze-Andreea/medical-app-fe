@@ -21,7 +21,7 @@ export class TokenStorageService {
   }
 
   public getToken(): string {
-    return window.sessionStorage.getItem(TOKEN_KEY) as string; 
+    return window.sessionStorage.getItem(TOKEN_KEY) as string;
   }
 
   public saveUser(user: string) {
@@ -30,7 +30,7 @@ export class TokenStorageService {
   }
 
   public getUser(): string {
-    return window.sessionStorage.getItem(USER_KEY)  as string;
+    return window.sessionStorage.getItem(USER_KEY) as string;
   }
 
   public saveId(id: string) {
@@ -48,6 +48,6 @@ export class TokenStorageService {
   }
 
   public getRole(): string {
-    return window.sessionStorage.getItem(ROLE_KEY)  as string;
+    return window.sessionStorage.getItem(ROLE_KEY) as string;
   }
 }

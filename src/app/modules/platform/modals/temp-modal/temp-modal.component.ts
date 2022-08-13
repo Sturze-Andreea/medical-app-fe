@@ -15,6 +15,7 @@ import { TemperatureService } from 'src/app/data/services/temperature.service';
 })
 export class TempModalComponent implements OnInit {
   tempForm: FormGroup;
+  today = (new Date()).toISOString().substring(0,10)
   constructor(
     public dialogRef: MatDialogRef<TempModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -28,7 +29,7 @@ export class TempModalComponent implements OnInit {
     this.tempForm = this.formBuilder.group({
       temp: ['', [Validators.required, Validators.min(30), Validators.max(45)]],
       hospitalizationId: [this.data.hospitalization, []],
-      date: ['', [Validators.required]],
+      date: [this.today, [Validators.required]],
     });
   }
 

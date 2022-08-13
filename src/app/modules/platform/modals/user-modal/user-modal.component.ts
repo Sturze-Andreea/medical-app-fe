@@ -5,8 +5,10 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
+import { Role } from 'src/app/data/models/role.model';
 import { AuthService } from 'src/app/data/services/auth.service';
 import { NotificationService } from 'src/app/data/services/notification.service';
+import { RoleService } from 'src/app/data/services/role.service';
 
 @Component({
   selector: 'app-user-modal',
@@ -15,22 +17,28 @@ import { NotificationService } from 'src/app/data/services/notification.service'
 })
 export class UserModalComponent implements OnInit {
   userForm: FormGroup;
+  roles: Role[] = [];
   constructor(
     public dialogRef: MatDialogRef<UserModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialog: MatDialog,
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private notifyService: NotificationService
+    private notifyService: NotificationService,
+    private roleService: RoleService
   ) {}
 
   ngOnInit() {
+    this.roleService.refreshList().subscribe((data) => {
+      this.roles = data as Role[];
+    });
     if (this.data) {
       this.userForm = this.formBuilder.group({
         email: [this.data.email, [Validators.required, Validators.email]],
         password: ['', []],
         firstName: [this.data.firstName, [Validators.required]],
         lastName: [this.data.lastName, [Validators.required]],
+        roleId: [this.data.roleId, [Validators.required]],
       });
     } else {
       this.userForm = this.formBuilder.group({
@@ -38,6 +46,7 @@ export class UserModalComponent implements OnInit {
         password: ['', [Validators.required]],
         firstName: ['', [Validators.required]],
         lastName: ['', [Validators.required]],
+        roleId: ['', [Validators.required]],
       });
     }
   }

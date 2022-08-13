@@ -47,6 +47,19 @@
         You must enter a value!
       </mat-error>
     </mat-form-field>
+    <mat-form-field class="full-width-input" color="accent">
+      
+      <mat-label>Patient</mat-label>
+      <mat-select formControlName="roleId" required>
+        <mat-option *ngFor="let role of roles" [value]="role.roleId">{{role.name}}</mat-option>
+      </mat-select>
+    
+    <mat-error
+      *ngIf="userForm.controls.roleId.hasError('required')"
+    >
+      You must enter a value!
+    </mat-error>
+  </mat-form-field>
     <button
       mat-raised-button
       color="primary"

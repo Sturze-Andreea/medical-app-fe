@@ -15,9 +15,7 @@ export class RoleService {
     list:Role[];
 
     refreshList(){
-        this.httpClient.get(this.baseURL)
-        .toPromise()
-        .then(res => this.list = res as Role[])
+        return this.httpClient.get(this.baseURL)
     }
 
     add(){

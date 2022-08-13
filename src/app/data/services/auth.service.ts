@@ -48,12 +48,12 @@ export class AuthService {
         (data: any) => {
           this.tokenStorage.saveToken(data['token']);
           this.tokenStorage.saveUser(data['email']);
-          this.tokenStorage.saveId(data['id']);
-          // this.tokenStorage.saveRole(data['role']);
+          this.tokenStorage.saveId(data['userId']);
+          this.tokenStorage.saveRole(data['role']);
           this.router.navigate(['/']);
         },
         (err: any) => {
-          this.notifyService.showError('Invalid Email or Passwors', '');
+          this.notifyService.showError('Invalid Email or Password', '');
         }
       );
   }

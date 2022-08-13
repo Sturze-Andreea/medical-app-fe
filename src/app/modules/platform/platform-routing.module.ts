@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthorizationGuardService } from 'src/app/data/services/authorization-guard.service';
 import { AllPacientsViewComponent } from './all-pacients-view/all-pacients-view.component';
 import { PacientDetailsComponent } from './pacient-details/pacient-details.component';
 import { PacientsComponent } from './pacients/pacients.component';
@@ -31,6 +32,12 @@ const routes: Routes = [
       {
         path: 'users',
         component: UsersViewComponent,
+        canActivate: [AuthorizationGuardService],
+        data: {
+          authorization: {
+            roles: ['Admin'],
+          },
+        },
       },
     ],
   },

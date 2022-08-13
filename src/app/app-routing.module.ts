@@ -8,11 +8,11 @@ const routes: Routes = [
   {
     path: '',
     component: AppLayoutComponent,
+    canActivate: [AuthenticationGuardService],
     children: [
       {
         path: 'help',
         component: HelpComponent,
-        canActivate: [AuthenticationGuardService],
       },
       {
         path: '',
@@ -20,7 +20,6 @@ const routes: Routes = [
           import('./modules/platform/platform.module').then(
             (m) => m.PlatformModule
           ),
-          canActivate: [AuthenticationGuardService],
       }
     ],
   },{

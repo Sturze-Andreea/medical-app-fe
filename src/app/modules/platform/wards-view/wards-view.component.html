@@ -1,4 +1,4 @@
-<div class="actions">
+<div class="actions" *ngIf="role==='Admin'" >
   <div class="add-btn">
     <button mat-raised-button color="primary" (click)="openDialog()">
       <mat-icon>add</mat-icon>
@@ -18,9 +18,9 @@
       <span routerLink="/hospitalizations/{{ ward.wardId }}">
         {{ ward.name }}&nbsp;
       </span>
-      <mat-icon class="delete-icon" (click)="openDialogEdit(ward)"
+      <mat-icon *ngIf="role==='Admin'" class="delete-icon" (click)="openDialogEdit(ward)"
         >edit</mat-icon
-      ><mat-icon class="delete-icon" matChipRemove 
+      ><mat-icon *ngIf="role==='Admin'"  class="delete-icon" matChipRemove 
         >cancel</mat-icon
       >
     </mat-chip>

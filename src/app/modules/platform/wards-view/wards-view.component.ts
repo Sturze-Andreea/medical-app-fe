@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Ward } from 'src/app/data/models/ward.model';
+import { TokenStorageService } from 'src/app/data/services/token-storage.service';
 import { WardService } from 'src/app/data/services/ward.service';
 import { DeleteModalComponent } from '../modals/delete-modal/delete-modal.component';
 import { WardModalComponent } from '../modals/ward-modal/ward-modal.component';
@@ -11,7 +12,14 @@ import { WardModalComponent } from '../modals/ward-modal/ward-modal.component';
   styleUrls: ['./wards-view.component.scss'],
 })
 export class WardsViewComponent implements OnInit {
-  constructor(public service: WardService, public dialog: MatDialog) {}
+  role: string = '';
+  constructor(
+    public service: WardService,
+    public dialog: MatDialog,
+    private tokenService: TokenStorageService
+  ) {
+    this.role = this.tokenService.getRole();
+  }
 
   ngOnInit(): void {
     this.service.refreshList();
