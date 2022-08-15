@@ -51,7 +51,12 @@ export class AllPacientsViewComponent implements OnInit {
     const dialogRef = this.dialog.open(PacientModalComponent, {
       data: undefined,
     });
-    dialogRef.afterClosed().subscribe((data: any) => {});
+    dialogRef.afterClosed().subscribe((data: any) => {
+      this.pacientService.refreshList().subscribe((data: any) => {
+        this.dataSource = new MatTableDataSource(data as Pacient[]);
+        this.dataSource.paginator = this.paginator;
+      });
+    });
   }
 
   openDialogEdit(pacient: any): void {

@@ -63,7 +63,8 @@ export class UserModalComponent implements OnInit {
           this.userForm.controls.email.value,
           this.userForm.controls.password.value,
           this.userForm.controls.firstName.value,
-          this.userForm.controls.lastName.value
+          this.userForm.controls.lastName.value,
+          this.userForm.controls.roleId.value
         )
         .subscribe(
           (data: any) => {
@@ -79,7 +80,8 @@ export class UserModalComponent implements OnInit {
           this.userForm.controls.email.value,
           this.userForm.controls.password.value,
           this.userForm.controls.firstName.value,
-          this.userForm.controls.lastName.value
+          this.userForm.controls.lastName.value,
+          this.userForm.controls.roleId.value
         )
         .subscribe(
           (data: any) => {

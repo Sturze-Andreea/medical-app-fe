@@ -11,6 +11,7 @@ import { NotificationService } from 'src/app/data/services/notification.service'
 })
 export class EvolutionModalComponent implements OnInit {
   evolutionForm: FormGroup;
+  today = (new Date()).toISOString().substring(0,10);
   constructor(
     public dialogRef: MatDialogRef<EvolutionModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -24,7 +25,7 @@ export class EvolutionModalComponent implements OnInit {
     this.evolutionForm = this.formBuilder.group({
       description: ['', [Validators.required]],
       hospitalizationId: [this.data.hospitalization, []],
-      date: ['', [Validators.required]],
+      date: [this.today, [Validators.required]],
     });
   }
 

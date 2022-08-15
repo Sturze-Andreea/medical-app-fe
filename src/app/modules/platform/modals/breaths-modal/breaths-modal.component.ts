@@ -11,6 +11,7 @@ import { NotificationService } from 'src/app/data/services/notification.service'
 })
 export class BreathModalComponent implements OnInit {
   breathForm: FormGroup;
+  today = (new Date()).toISOString().substring(0,10);
   constructor(
     public dialogRef: MatDialogRef<BreathModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -24,7 +25,7 @@ export class BreathModalComponent implements OnInit {
     this.breathForm = this.formBuilder.group({
       breathNr: ['', [Validators.required, Validators.min(8), Validators.max(20)]],
       hospitalizationId: [this.data.hospitalization, []],
-      date: ['', [Validators.required]],
+      date: [this.today, [Validators.required]],
     });
   }
 

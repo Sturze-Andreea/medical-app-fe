@@ -49,7 +49,7 @@
     </mat-form-field>
     <mat-form-field class="full-width-input" color="accent">
       
-      <mat-label>Patient</mat-label>
+      <mat-label>Role</mat-label>
       <mat-select formControlName="roleId" required>
         <mat-option *ngFor="let role of roles" [value]="role.roleId">{{role.name}}</mat-option>
       </mat-select>

@@ -11,6 +11,7 @@ import { NotificationService } from 'src/app/data/services/notification.service'
 })
 export class OthersModalComponent implements OnInit {
   liquidsForm: FormGroup;
+  today = (new Date()).toISOString().substring(0,10);
   constructor(
     public dialogRef: MatDialogRef<OthersModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -26,7 +27,7 @@ export class OthersModalComponent implements OnInit {
       diuresis: ['', [Validators.required]],
       discharge: ['', [Validators.required]],
       hospitalizationId: [this.data.hospitalization, []],
-      date: ['', [Validators.required]],
+      date: [this.today, [Validators.required]],
     });
   }
 

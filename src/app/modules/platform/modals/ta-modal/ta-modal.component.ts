@@ -11,6 +11,7 @@ import { TAService } from 'src/app/data/services/ta.service';
 })
 export class TaModalComponent implements OnInit {
   taForm: FormGroup;
+  today = (new Date()).toISOString().substring(0,10);
   constructor(
     public dialogRef: MatDialogRef<TaModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -25,7 +26,7 @@ export class TaModalComponent implements OnInit {
       min: ['', [Validators.required, Validators.min(30), Validators.max(130)]],
       max: ['', [Validators.required, Validators.min(30), Validators.max(130)]],
       hospitalizationId: [this.data.hospitalization, []],
-      date: ['', [Validators.required]],
+      date: [this.today, [Validators.required]],
     });
   }
 

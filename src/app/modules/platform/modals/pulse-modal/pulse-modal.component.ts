@@ -11,6 +11,7 @@ import { PulseService } from 'src/app/data/services/pulse.service';
 })
 export class PulseModalComponent implements OnInit {
   pulseForm: FormGroup;
+  today = (new Date()).toISOString().substring(0,10);
   constructor(
     public dialogRef: MatDialogRef<PulseModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -24,7 +25,7 @@ export class PulseModalComponent implements OnInit {
     this.pulseForm = this.formBuilder.group({
       puls: ['', [Validators.required, Validators.min(30), Validators.max(130)]],
       hospitalizationId: [this.data.hospitalization, []],
-      date: ['', [Validators.required]],
+      date: [this.today, [Validators.required]],
     });
   }
 

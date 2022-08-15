@@ -32,12 +32,16 @@ export class RegisterComponent implements OnInit {
         this.registerForm.controls.email.value,
         this.registerForm.controls.password.value,
         this.registerForm.controls.firstName.value,
-        this.registerForm.controls.lastName.value
+        this.registerForm.controls.lastName.value,
+        1
       )
-      .subscribe((data: any) => {
-        this.router.navigate(['/login']);
-      },(err:any)=>{
-        this.notifyService.showError(err, '');
-      });
+      .subscribe(
+        (data: any) => {
+          this.router.navigate(['/login']);
+        },
+        (err: any) => {
+          this.notifyService.showError(err, '');
+        }
+      );
   }
 }

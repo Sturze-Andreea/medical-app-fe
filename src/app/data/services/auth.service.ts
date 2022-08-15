@@ -62,7 +62,8 @@ export class AuthService {
     email: string,
     password: string,
     firstName: string,
-    lastName: string
+    lastName: string,
+    roleId: number
   ) {
     return this.httpClient.post(
       `${this.baseURL}/register`,
@@ -71,6 +72,7 @@ export class AuthService {
         lastName: lastName,
         email: email,
         password: password,
+        roleId: roleId,
       },
       { headers: this.headers }
     );
@@ -81,7 +83,8 @@ export class AuthService {
     email: string,
     password: string,
     firstName: string,
-    lastName: string
+    lastName: string,
+    roleId: number
   ) {
     if (password === '') {
       return this.httpClient.put(
@@ -90,6 +93,7 @@ export class AuthService {
           firstName: firstName,
           lastName: lastName,
           email: email,
+          roleId: roleId,
         },
         { headers: this.headers }
       );
@@ -114,7 +118,7 @@ export class AuthService {
     return this.httpClient.delete(`${this.baseURL}/${id}`);
   }
 
-  getById(id:number){
+  getById(id: number) {
     return this.httpClient.get(`${this.baseURL}/${id}`);
-}
+  }
 }
