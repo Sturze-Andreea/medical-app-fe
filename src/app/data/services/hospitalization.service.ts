@@ -41,4 +41,9 @@ export class HospitalizationService {
   getDetails(id: number) {
     return this.httpClient.get(`${this.baseURL}/details/${id}`);
   }
+
+  getChartData(id: number) {
+    return this.httpClient.get(`${this.baseURL}/chart/${id}`);
+  }
+
 }

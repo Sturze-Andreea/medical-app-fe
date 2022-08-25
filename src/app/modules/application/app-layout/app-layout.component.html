@@ -6,7 +6,7 @@
   <span class="example-spacer"></span
   ><button mat-icon-button routerLink="/wards">
     <mat-icon>local_hospital</mat-icon>
-  </button><button mat-icon-button routerLink="/all-pacients">
+  </button><button  *ngIf="role!=='Admin'" mat-icon-button routerLink="/all-pacients">
     <mat-icon>supervised_user_circle</mat-icon>
   </button>
   <button mat-icon-button *ngIf="role=='Admin'" routerLink="/users">

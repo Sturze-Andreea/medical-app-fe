@@ -1,0 +1,9 @@
+<div>
+  <div class="x-icon">
+    <mat-icon color="error" (click)="close()">close</mat-icon>
+  </div>
+  <div> <button mat-raised-button color="accent" (click)="downloadAsPDF()">Export To PDF</button></div>
+  <div #pdfChart *ngIf="chart">
+    <canvas id="canvas" width="1000" height="600">{{ chart }}</canvas>
+  </div>
+</div>

@@ -20,14 +20,32 @@ const routes: Routes = [
       {
         path: 'hospitalizations/:wardId',
         component: PacientsComponent,
+        canActivate: [AuthorizationGuardService],
+        data: {
+          authorization: {
+            roles: ['Doctor', 'Nurse'],
+          },
+        },
       },
       {
         path: 'all-pacients',
         component: AllPacientsViewComponent,
+        canActivate: [AuthorizationGuardService],
+        data: {
+          authorization: {
+            roles: ['Doctor', 'Nurse'],
+          },
+        },
       },
       {
         path: 'pacient-details/:hospitalizationId',
         component: PacientDetailsComponent,
+        canActivate: [AuthorizationGuardService],
+        data: {
+          authorization: {
+            roles: ['Doctor', 'Nurse'],
+          },
+        },
       },
       {
         path: 'users',

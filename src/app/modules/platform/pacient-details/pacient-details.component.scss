@@ -180,3 +180,12 @@ mat-paginator {
 .medication .content {
   cursor: default;
 }
+
+.chart-btn{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: calc((17.5% - 4rem) / 2);
+}
+.chart-btn button{
+  background-color: #8ba99f;
+}

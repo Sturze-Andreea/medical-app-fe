@@ -24,6 +24,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { DeleteModalComponent } from '../modals/delete-modal/delete-modal.component';
 import { DrugModalComponent } from '../modals/drug-modal/drug-modal.component';
+import { ChartComponent } from '../chart/chart.component';
 @Component({
   selector: 'app-pacient-details',
   templateUrl: './pacient-details.component.html',
@@ -266,6 +267,12 @@ export class PacientDetailsComponent implements OnInit {
           this.drugs = data;
           this.dataSource = new MatTableDataSource(data as Drug[]);
         });
+    });
+  }
+
+  openChart(): void {
+    const dialogRef = this.dialog.open(ChartComponent, {
+      data: this.hospitalization.hospitalizationId
     });
   }
 }

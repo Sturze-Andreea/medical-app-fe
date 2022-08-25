@@ -3,7 +3,6 @@ export class ClinicalExamination {
     public hospitalizationId: number;
     public generalCondition: string;
     public height: number;
-    public behaviour: string;
     public weight: number;
     public nutrition: string;
     public consciousness: string;

@@ -18,6 +18,7 @@ export class UsersViewComponent implements OnInit {
       this.users = data;
     });
   }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(UserModalComponent, {
       data: undefined,

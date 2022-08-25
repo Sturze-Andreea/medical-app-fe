@@ -10,10 +10,10 @@ const routes: Routes = [
     component: AppLayoutComponent,
     canActivate: [AuthenticationGuardService],
     children: [
-      {
-        path: 'help',
-        component: HelpComponent,
-      },
+      // {
+      //   path: 'help',
+      //   component: HelpComponent,
+      // },
       {
         path: '',
         loadChildren: () =>

@@ -5,6 +5,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [],
@@ -17,6 +18,7 @@ import { BrowserModule } from '@angular/platform-browser';
     ToastrModule.forRoot({
       positionClass: 'toast-top-center',
     }),
+    ChartsModule
   ],
 })
 export class SharedModule {}

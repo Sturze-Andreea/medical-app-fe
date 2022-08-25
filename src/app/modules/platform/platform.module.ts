@@ -31,6 +31,7 @@ import { EvolutionModalComponent } from './modals/evolution-modal/evolution-moda
 import { AllOthersComponent } from './modals/all-others/all-others.component';
 import { OthersModalComponent } from './modals/others-modal/others-modal.component';
 import { DrugModalComponent } from './modals/drug-modal/drug-modal.component';
+import { ChartComponent } from './chart/chart.component';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { DrugModalComponent } from './modals/drug-modal/drug-modal.component';
     AllOthersComponent,
     OthersModalComponent,
     DrugModalComponent,
+    ChartComponent
   ],
   imports: [
     CommonModule,
