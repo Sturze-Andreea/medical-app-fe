@@ -1,4 +1,10 @@
-import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import {
   MatDialog,
   MatDialogRef,
@@ -16,37 +22,34 @@ import html2canvas from 'html2canvas';
 })
 export class ChartComponent implements OnInit {
   chart: any = [];
-  @ViewChild('pdfChart', {static: false}) pdfChart: ElementRef;
+  @ViewChild('pdfChart', { static: false }) pdfChart: ElementRef;
   constructor(
     private hospitalizationService: HospitalizationService,
     public dialogRef: MatDialogRef<ChartComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialog: MatDialog
   ) {}
-  ngAfterViewInit() {
-    console.log('on after view init', this.pdfChart);
-    // this returns null
-  }
+
   createDiagonalPattern(color = 'black') {
-    let shape = document.createElement('canvas')
-    shape.width = 10
-    shape.height = 10
-    let c: any = shape.getContext('2d')
-    c.strokeStyle = color
-    c.beginPath()
-    c.moveTo(2, 0)
-    c.lineTo(10, 8)
-    c.stroke()
-    c.beginPath()
-    c.moveTo(0, 8)
-    c.lineTo(2, 10)
-    c.stroke()
-    return c.createPattern(shape, 'repeat')
+    let shape = document.createElement('canvas');
+    shape.width = 10;
+    shape.height = 10;
+    let c: any = shape.getContext('2d');
+    c.strokeStyle = color;
+    c.beginPath();
+    c.moveTo(2, 0);
+    c.lineTo(10, 8);
+    c.stroke();
+    c.beginPath();
+    c.moveTo(0, 8);
+    c.lineTo(2, 10);
+    c.stroke();
+    return c.createPattern(shape, 'repeat');
   }
 
   ngOnInit(): void {
     this.hospitalizationService
-      .getChartData(this.data)
+      .getChartData(this.data.id)
       .subscribe((res: any) => {
         this.chart = new Chart('canvas', {
           data: {
@@ -108,8 +111,6 @@ export class ChartComponent implements OnInit {
                 },
               ],
               yAxes: [
-                
-                
                 {
                   stacked: false,
                   position: 'left',
@@ -128,7 +129,8 @@ export class ChartComponent implements OnInit {
                     fontSize: 13,
                     padding: 10,
                   },
-                },{
+                },
+                {
                   stacked: false,
                   position: 'left',
                   scaleLabel: {
@@ -146,7 +148,8 @@ export class ChartComponent implements OnInit {
                     fontSize: 13,
                     padding: 10,
                   },
-                },{
+                },
+                {
                   stacked: false,
                   position: 'left',
                   scaleLabel: {
@@ -164,7 +167,8 @@ export class ChartComponent implements OnInit {
                     fontSize: 13,
                     padding: 10,
                   },
-                },{
+                },
+                {
                   stacked: false,
                   position: 'left',
                   scaleLabel: {
@@ -182,8 +186,7 @@ export class ChartComponent implements OnInit {
                     fontSize: 13,
                     padding: 10,
                   },
-                }
-                
+                },
               ],
             },
           },
@@ -194,18 +197,23 @@ export class ChartComponent implements OnInit {
   close() {
     this.dialogRef.close();
   }
-  
-  public downloadAsPDF()  
-  {  
+
+  public downloadAsPDF() {
     html2canvas(this.pdfChart.nativeElement, { scale: 3 }).then((canvas) => {
       const imageGeneratedFromTemplate = canvas.toDataURL('image/png');
       const fileWidth = 250;
       const generatedImageHeight = (canvas.height * fileWidth) / canvas.width;
-      let PDF = new jsPDF('l', 'mm', 'a4',);
-      PDF.addImage(imageGeneratedFromTemplate, 'PNG', 0, 5, fileWidth, generatedImageHeight,);
-      PDF.html(this.pdfChart.nativeElement.innerHTML)
-      PDF.save('temperature-chart.pdf');
+      let PDF = new jsPDF('l', 'mm', 'a4');
+      PDF.addImage(
+        imageGeneratedFromTemplate,
+        'PNG',
+        0,
+        5,
+        fileWidth,
+        generatedImageHeight
+      );
+      PDF.html(this.pdfChart.nativeElement.innerHTML);
+      PDF.save(`chart-${this.data.pacient}.pdf`);
     });
-    
-}
+  }
 }

@@ -272,7 +272,7 @@ export class PacientDetailsComponent implements OnInit {
 
   openChart(): void {
     const dialogRef = this.dialog.open(ChartComponent, {
-      data: this.hospitalization.hospitalizationId
+      data: {id: this.hospitalization.hospitalizationId, pacient: `${this.patient.lastName} ${this.patient.firstName}`}
     });
   }
 }
