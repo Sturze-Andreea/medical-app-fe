@@ -37,6 +37,7 @@
           placeholder="Date"
           formControlName="date"
           required
+          [max]="this.today"
         />
         <mat-error *ngIf="liquidsForm.controls.date.hasError('required')">
           You must enter a value!

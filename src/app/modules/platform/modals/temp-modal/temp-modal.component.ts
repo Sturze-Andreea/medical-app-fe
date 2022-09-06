@@ -27,7 +27,7 @@ export class TempModalComponent implements OnInit {
 
   ngOnInit() {
     this.tempForm = this.formBuilder.group({
-      temp: ['', [Validators.required, Validators.min(30), Validators.max(45)]],
+      temp: ['', [Validators.required, Validators.min(35), Validators.max(42)]],
       hospitalizationId: [this.data.hospitalization, []],
       date: [this.today, [Validators.required]],
     });

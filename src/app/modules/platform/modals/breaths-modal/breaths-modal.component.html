@@ -28,6 +28,7 @@
           placeholder="Date"
           formControlName="date"
           required
+          [max]="this.today"
         />
         <mat-error *ngIf="breathForm.controls.date.hasError('required')">
           You must enter a value!

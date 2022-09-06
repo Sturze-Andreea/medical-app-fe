@@ -23,8 +23,8 @@ export class TaModalComponent implements OnInit {
 
   ngOnInit() {
     this.taForm = this.formBuilder.group({
-      min: ['', [Validators.required, Validators.min(30), Validators.max(130)]],
-      max: ['', [Validators.required, Validators.min(30), Validators.max(130)]],
+      min: ['', [Validators.required, Validators.min(30), Validators.max(350)]],
+      max: ['', [Validators.required, Validators.min(30), Validators.max(350)]],
       hospitalizationId: [this.data.hospitalization, []],
       date: [this.today, [Validators.required]],
     });

@@ -23,7 +23,7 @@ export class PulseModalComponent implements OnInit {
 
   ngOnInit() {
     this.pulseForm = this.formBuilder.group({
-      puls: ['', [Validators.required, Validators.min(30), Validators.max(130)]],
+      puls: ['', [Validators.required, Validators.min(40), Validators.max(180)]],
       hospitalizationId: [this.data.hospitalization, []],
       date: [this.today, [Validators.required]],
     });

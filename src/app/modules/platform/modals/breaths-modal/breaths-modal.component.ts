@@ -23,7 +23,7 @@ export class BreathModalComponent implements OnInit {
 
   ngOnInit() {
     this.breathForm = this.formBuilder.group({
-      breathNr: ['', [Validators.required, Validators.min(8), Validators.max(20)]],
+      breathNr: ['', [Validators.required, Validators.min(5), Validators.max(40)]],
       hospitalizationId: [this.data.hospitalization, []],
       date: [this.today, [Validators.required]],
     });
