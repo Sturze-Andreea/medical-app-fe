@@ -122,7 +122,7 @@ export class ChartComponent implements OnInit {
                   id: 'y-axis-4',
                   ticks: {
                     max: 42,
-                    min: 36,
+                    min: 35,
                     stepSize: 1,
                     display: true,
                     beginAtZero: false,
@@ -141,7 +141,7 @@ export class ChartComponent implements OnInit {
                   id: 'y-axis-3',
                   ticks: {
                     max: 180,
-                    min: 60,
+                    min: 40,
                     stepSize: 20,
                     display: true,
                     beginAtZero: false,
@@ -160,7 +160,7 @@ export class ChartComponent implements OnInit {
                   id: 'y-axis-2',
                   ticks: {
                     max: 350,
-                    min: 50,
+                    min: 0,
                     stepSize: 50,
                     display: true,
                     beginAtZero: false,
@@ -179,7 +179,7 @@ export class ChartComponent implements OnInit {
                   id: 'y-axis-1',
                   ticks: {
                     max: 40,
-                    min: 10,
+                    min: 5,
                     stepSize: 5,
                     display: true,
                     beginAtZero: false,
